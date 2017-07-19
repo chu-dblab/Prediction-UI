@@ -44,7 +44,7 @@ function errorDialogAlertMsg(text) {
 function resendDialogAlertMsg(text) {
   var alertArea = $(".Message");
   alertArea.empty();
-  alertArea.append('<div data-alert class="alert-box warning radius">    '+text+'    <a href="#" id="resend-btn" onclick="resendEmail()">重新發送驗證信</a><a href="#" class="close">&times;</a>  </div>');
+  alertArea.append('<div data-alert class="alert-box warning radius">    '+text+'    <a id="resend-btn" class="button small" onclick="resendEmail()">重新發送驗證信</a><a href="#" class="close">&times;</a>  </div>');
 }
 
 //增加縣市option標籤
