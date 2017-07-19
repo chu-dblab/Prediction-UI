@@ -32,6 +32,7 @@ function successDialogAlertMsg(text) {
   alertArea.empty();
   // alertArea.append('<div class="modal-header modal-header-success"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myMessageModalLabel">'+text+'</h4></div>');
   alertArea.append('<div data-alert class="alert-box success radius">    '+text+'    <a href="#" class="close">&times;</a>  </div>');
+  $(document).foundation('alert', 'reflow');
 }
 
 function errorDialogAlertMsg(text) {
@@ -39,12 +40,14 @@ function errorDialogAlertMsg(text) {
   alertArea.empty();
   // alertArea.append('<div class="modal-header modal-header-danger"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myMessageModalLabel">'+text+'</h4></div>');
   alertArea.append('<div data-alert class="alert-box alert radius">    '+text+'    <a href="#" class="close">&times;</a>  </div>');
+  $(document).foundation('alert', 'reflow');
 }
 
 function resendDialogAlertMsg(text) {
   var alertArea = $(".Message");
   alertArea.empty();
-  alertArea.append('<div data-alert class="alert-box warning radius">    '+text+'    <a id="resend-btn" class="button small" onclick="resendEmail()">重新發送驗證信</a><a href="#" class="close">&times;</a>  </div>');
+  alertArea.append('<div data-alert class="alert-box warning radius">    '+text+'    <a href="#" id="resend-btn" onclick="resendEmail()">重新發送驗證信</a><a href="#" class="close">&times;</a>  </div>');
+  $(document).foundation('alert', 'reflow');
 }
 
 //增加縣市option標籤
