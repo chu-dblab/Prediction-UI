@@ -27,26 +27,26 @@ function getRegisterData() {
 
   return register_data;
 }
-function successDialogAlertMsg(text) {
-  var alertArea = $(".Message");
+function successDialogAlertMsg(id, text) {
+  var alertArea = $('#'+id);
   alertArea.empty();
   // alertArea.append('<div class="modal-header modal-header-success"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myMessageModalLabel">'+text+'</h4></div>');
   alertArea.append('<div data-alert class="alert-box success radius">    '+text+'    <a href="#" class="close">&times;</a>  </div>');
   $(document).foundation('alert', 'reflow');
 }
 
-function errorDialogAlertMsg(text) {
-  var alertArea = $(".Message");
+function errorDialogAlertMsg(id ,text) {
+  var alertArea = $('#'+id);
   alertArea.empty();
   // alertArea.append('<div class="modal-header modal-header-danger"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myMessageModalLabel">'+text+'</h4></div>');
   alertArea.append('<div data-alert class="alert-box alert radius">    '+text+'    <a href="#" class="close">&times;</a>  </div>');
   $(document).foundation('alert', 'reflow');
 }
 
-function resendDialogAlertMsg(text) {
-  var alertArea = $(".Message");
+function resendDialogAlertMsg(id ,text) {
+  var alertArea = $('#'+id);
   alertArea.empty();
-  alertArea.append('<div data-alert class="alert-box warning radius">    '+text+'    <a href="#" id="resend-btn" onclick="resendEmail()">重新發送驗證信</a><a href="#" class="close">&times;</a>  </div>');
+  alertArea.append('<div data-alert class="alert-box warning radius">    '+text+'    <a id="resend-btn" class="button tiny" onclick="resendEmail()">重新發送驗證信</a><a href="#" class="close">&times;</a>  </div>');
   $(document).foundation('alert', 'reflow');
 }
 
@@ -770,7 +770,7 @@ function resendEmail() {
         // $('#myResendModal').modal('hide');
       },
       success: function(data){
-        successDialogAlertMsg(data.message);
+        successDialogAlertMsg('loginMessage',data.message);
         $('input[type=submit]').prop( "disabled", false );
         // $('#myMessageModal').modal('show');
       },
@@ -778,12 +778,12 @@ function resendEmail() {
         var jsonObj = JSON.parse(data.responseText);
         if(data.status == 406)
         {
-          errorDialogAlertMsg("<strong>錯誤！</strong> "+jsonObj.message);
+          errorDialogAlertMsg('loginMessage',"<strong>錯誤！</strong> "+jsonObj.message);
           $('input[type=submit]').prop( "disabled", false );
           // $('#myMessageModal').modal('show');
         }
         else {
-          errorDialogAlertMsg("<strong>錯誤！</strong> 沒有網路連線");
+          errorDialogAlertMsg('loginMessage',"<strong>錯誤！</strong> 沒有網路連線");
           $('input[type=submit]').prop( "disabled", false );
           // $('#myMessageModal').modal('show');
         }
@@ -843,14 +843,15 @@ $('#send-register-btn').click(function (e){
         {
           $('input[type=submit]').prop( "disabled", false );
           // $('#myRegisterModal').modal('hide');
-          errorDialogAlertMsg("<strong>註冊失敗！</strong> "+data.message);
+          errorDialogAlertMsg('registerMessage',"<strong>註冊失敗！</strong> "+data.message);
           // $('#myMessageModal').modal('show');
         }
         else{
           $('input[type=submit]').prop( "disabled", false );
           // $('#myRegisterModal').modal('hide');
-          successDialogAlertMsg("<strong>註冊成功！</strong> "+data.message);
+          successDialogAlertMsg('loginMessage',"<strong>註冊成功！</strong> "+data.message);
           // $('#myMessageModal').modal('show');
+          $('#signin-email').val('');
           $('#login-modal').foundation('reveal', 'open');
         }
       },
@@ -858,12 +859,12 @@ $('#send-register-btn').click(function (e){
         // 隱藏處理中畫面
         if(data.status == 406)
         {
-          errorDialogAlertMsg("<strong>錯誤！</strong> "+data.message);
+          errorDialogAlertMsg('registerMessage',"<strong>錯誤！</strong> "+data.message);
           $('input[type=submit]').prop( "disabled", false );
           // $('#myMessageModal').modal('show');
         }
         else {
-          errorDialogAlertMsg("<strong>錯誤！</strong> 沒有網路連線");
+          errorDialogAlertMsg('registerMessage',"<strong>錯誤！</strong> 沒有網路連線");
           $('input[type=submit]').prop( "disabled", false );
           // $('#myMessageModal').modal('show');
         }
@@ -895,7 +896,7 @@ $('#signbtn').click(function(e) {
       },
       success: function(data){
         // 隱藏處理中畫面
-          successDialogAlertMsg("<strong>"+data.message+"</strong>");
+          successDialogAlertMsg('loginMessage',"<strong>"+data.message+"</strong>");
           $('input[type=submit]').prop( "disabled", false );
           $('#login-modal').foundation('reveal', 'close');
       },
@@ -904,18 +905,18 @@ $('#signbtn').click(function(e) {
         var jsonObj = JSON.parse(data.responseText);
         if(data.status == 404)
         {
-          errorDialogAlertMsg("<strong>錯誤！</strong> "+jsonObj.message);
+          errorDialogAlertMsg('loginMessage',"<strong>錯誤！</strong> "+jsonObj.message);
           $('input[type=submit]').prop( "disabled", false );
           // $('#myMessageModal').modal('show');
         }
         else if(data.status == 401)
         {
-          resendDialogAlertMsg(jsonObj.message);
+          resendDialogAlertMsg('loginMessage',jsonObj.message);
           $('input[type=submit]').prop( "disabled", false );
           // $('#myResendModal').modal('show');
         }
         else {
-          errorDialogAlertMsg("<strong>錯誤！</strong> 沒有網路連線");
+          errorDialogAlertMsg('loginMessage',"<strong>錯誤！</strong> 沒有網路連線");
           $('input[type=submit]').prop( "disabled", false );
           // $('#myMessageModal').modal('show');
         }
