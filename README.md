@@ -16,21 +16,22 @@ PredictionAPI <https://github.com/CHU-TDAP/PredictionAPI>
 root ─┬─ bower_components (請不要變動此檔案)
       ├─ node_modules (請不要變動此檔案)
       ├─ src (原始檔案)
-      │  └─ scss (網頁外觀專用檔案)
+      │  ├─ images
+      │  ├─ js
+      │  ├─ scss (網頁外觀專用檔案)
+      │  ├─ *.inc (全部頁面共通的部分)
+      │  └─ index.html (主要頁面)
       │  
-      └─ dist (最後發布網站用的資料夾)
+      └─ dist (最後發布網站用的資料夾，請不要變動)
          ├─ assets (外部函式庫資源)
-         ├─ css (請不要變動此檔案)
-         ├─ images
-         ├─ js
-         ├─ demo (測試專用的檔案)
-         └─ index.html (主要頁面)
+         └─ css (請不要變動此檔案)
 ```
 
 ### 注意！無論如何請不要更動以下資料夾！
 
 以下為自動產生的檔案，請不要直接修改，請參考以下說明。
 
+* `dist`: 網站部屬用，若要更動，請改`src`資料夾
 * `css`: 要修改網頁外觀，請改`sass`資料夾
 * `node_modules`
 * `bower_components`
