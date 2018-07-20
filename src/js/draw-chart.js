@@ -206,7 +206,7 @@ for(var i=0; i<link_chartItems.length; i++) {
       return true;
     }
     else {
-      window.scroll(0, $("#container").get(0).offsetTop-convertRem(6));
+      window.scroll(0, $("#container").get(0).offsetTop);
       return true;
     }
   }
