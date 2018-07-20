@@ -1,9 +1,11 @@
 var chart_data;
 var debug_data;
-var rotate = false;
+var chart_height = 500;
+var chart_rotate = false;
 // if(document.documentElement.clientWidth <= 640) {
 if(screen.width <= 640) {
-  rotate = true;
+  chart_rotate = true;
+  chart_height = 700;
 }
 
 var chart = c3.generate({
@@ -25,7 +27,21 @@ var chart = c3.generate({
     keys: {
       value:['name', '平均分數', '平均薪資', 'CP值']
     },
-    labels: true
+    axes: {
+      'CP值': 'y2'
+    },
+    labels: {
+      format: {
+        y: function () { return ""; },
+        y2: function (v) { return v + "%"; },
+        'CP值': function (v) { return v; }
+      }
+    },
+    colors: {
+      '平均分數': '#34c6bb',
+      '平均薪資': '#feab85',
+      'CP值': '#be4a47'
+    }
   },
   axis: {
     x: {
@@ -43,9 +59,26 @@ var chart = c3.generate({
     },
     y: {
       min: 0,
+      label: {
+        text: '平均分數 與 平均薪資',
+        position: 'outer-middle'
+        // inner-top : default
+        // inner-middle
+        // inner-bottom
+        // outer-top
+        // outer-middle
+        // outer-bottom
+      },
       padding: {bottom: 0}
     },
-    rotated: rotate
+    y2: {
+      show: true,
+      label: {
+        text: 'CP值',
+        position: 'outer-middle'
+      },
+    },
+    rotated: chart_rotate
   },
   legend: {
     // position: 'right'
@@ -58,8 +91,15 @@ var chart = c3.generate({
     //width: 100 // this makes bar width 100px
   },
   size: {
-      height: 500
+      height: chart_height
   },
+  grid: {
+    y: {
+      lines: [
+        {value: 0, axis: 'y2'}
+      ]
+    }
+  }
 });
 
 function selectChart(group, name, pmin = null, pmax = null) {
