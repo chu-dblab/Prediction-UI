@@ -3,7 +3,7 @@
   <div id="footer-left">
     <ul>
       <li>
-        2018 <a href="http://cs.chu.edu.tw/" target="_blank">中華大學資訊工程系</a> 資料探勘實驗室
+        2019 <a href="http://cs.chu.edu.tw/" target="_blank">中華大學資訊工程系</a> 資料探勘實驗室
       </li>
       <li>
         <ul>
