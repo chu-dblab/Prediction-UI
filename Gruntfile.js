@@ -1,13 +1,16 @@
+const  sass = require('node-sass');
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
     sass: {
       options: {
+        implementation: sass,
         includePaths: ['bower_components/foundation/scss']
       },
       dist: {
         options: {
+
           outputStyle: 'compressed'
         },
         files: {
