@@ -152,7 +152,7 @@ function renderTheChart(element_name, data) {
   });
 }
 
-d3.json("docs/107-CP-public.json").then(function(data) {
+d3.json("docs/108-CP-public.json").then(function(data) {
   chart_data = data;
   // 切換顯示動作
   var parm = getUrlParmC();
