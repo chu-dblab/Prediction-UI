@@ -712,6 +712,7 @@ $('#select-location').change(function(e) {
 
 function resetRegisterForm() {
   $('#register-email').val('');
+  $('#register-lineID').val('');
   $('#select-location').empty();
   $('#select-school').empty();
   $('#select-identity').empty();
@@ -847,7 +848,7 @@ $('#send-register-btn').click(function (e){
         else{
           $('input[type=submit]').prop( "disabled", false );
           // $('#myRegisterModal').modal('hide');
-          successDialogAlertMsg('loginMessage',"<strong>輸入完成！</strong> "+data.message);
+          successDialogAlertMsg('registerMessage',"<strong>輸入完成！</strong> "+data.message);
           // $('#myMessageModal').modal('show');
           // $('#signin-email').val('');
           // $('#login-modal').foundation('reveal', 'open');
