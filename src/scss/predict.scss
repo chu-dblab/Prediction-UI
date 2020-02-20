@@ -398,6 +398,10 @@ header {
       //@include grid-row;
       //@include grid-column(12);
       text-align: center;
+      img {
+        display: block;
+        margin: 0 auto;
+      }
     }
 
     @keyframes chu-welfare-ani {

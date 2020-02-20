@@ -244,17 +244,18 @@
   <!-- 查詢結果區域 -->
   <div id="result-area">
     <div class="banner">
-      <div>
-        <a href="http://www1.chu.edu.tw/p/412-1000-82.php?Lang=zh-tw" target="_blank">
-          <img src="../images/banner/CHU.gif">
-        </a>
-      </div>
-      <div id ="apply" class="hide-img">
-        <a href="#" data-reveal-id="user-input-data-modal">
-          <img src="https://picsum.photos/id/684/728/90" alt="">
-        </a>
-      </div>
-      
+        <ul class="banner-orbit" data-orbit>
+            <li class="active">
+                <a href="http://www.chu.edu.tw">
+                    <img src="https://picsum.photos/id/600/1440/150" alt="">
+                </a>
+            </li>
+            <li class="">
+                <a href="http://www.google.com">
+                    <img src="https://picsum.photos/id/684/1440/150" alt="">
+                </a>
+            </li>
+        </ul>
     </div>
     <section id="result-suggest-school-departments-area">
       <h2>落點分析結果 <small>(依薪資排序)</small></h2>
@@ -501,6 +502,17 @@
     });
     alert("2020年學測落點分析還未正式上線，目前僅供試用。");
   };
+  $(document).foundation({
+  orbit: {
+    animation: 'slide',
+    timer_speed: 3000,
+    pause_on_hover: true,
+    animation_speed: 800,
+    navigation_arrows: false,
+    bullets: false,
+    slide_number: false,
+  }
+});
 </script>
 <!-- ref:include analytics -->
 <!-- endref -->
