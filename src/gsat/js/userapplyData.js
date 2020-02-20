@@ -3,19 +3,32 @@ var baseRegisterSystemSingUpUrl = "api/gsat/store";
 function getRegisterData() {
   //取得資料
   var input_email      = document.getElementById('register-email').value;
-  var input_lineID     = document.getElementById('register-lineID').value
+  var input_phone      = document.getElementById('register-phone').value
   var select_location  = document.getElementById('select-location').value;
+  var input_address    = document.getElementById('register-address').value;
   var select_school    = document.getElementById('select-school').value;
   var select_identity  = document.getElementById('select-identity').value;
+  var input_isApplyCHU = null;
+  var input_interest = document.getElementById('interest').value;
+
+  var radio = document.getElementById('user_input').yesno;
+  for (let index = 0; index < radio.length; index++) {
+    if(radio[index].checked) {
+      input_isApplyCHU = new Boolean(parseInt(radio[index].value));
+      break;
+    }
+  }
 
   // 製作JSON
   var register_data = {
-
       "email": input_email,
-      "lineID": input_lineID,
+      "phoneNumber": input_phone,
+      "address": input_address,
       "location": select_location,
       "schoolName": select_school,
       "identity": select_identity,
+      "interestedDepart": input_interest,
+      "isApplyCHU": input_isApplyCHU,
       "user_input": data
   };
 
@@ -815,11 +828,14 @@ $('#send-register-btn').click(function (e){
   var inputRegisterData = getRegisterData();
 
   if( (inputRegisterData.email === '') ||
-  (inputRegisterData.lineID === '') ||
-  (inputRegisterData.lineID === '') ||
+  (inputRegisterData.phoneNumber === '') ||
+  (inputRegisterData.address === '') ||
   (inputRegisterData.location === '') ||
   (inputRegisterData.schoolName === '') ||
-  (inputRegisterData.identity === '')) {}
+  (inputRegisterData.identity === '') ||
+  (inputRegisterData.interestedDepart === '') ||
+  (inputRegisterData.isApplyCHU === '') ||
+  (inputRegisterData.user_input === '')) {}
   // 沒有問題，開始向後端要資料
   else {
     e.preventDefault();

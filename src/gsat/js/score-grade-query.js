@@ -186,6 +186,16 @@ function updateGsatTotalScore() {
 //     chu_welfare_a.innerHTML = show_string;
 //   }
 // }
+// var totalScore = getGsatTotalScore();
+// var item = document.getElementById('apply');
+// if(totalScore>30 && totalScore<50)
+// {
+//    item.classList.remove('hide-img');
+// }
+// else 
+// {
+//   addClass(item,"hide-img");
+// }
 
 function queryScoreGrade() {
   updateGsatTotalScore();

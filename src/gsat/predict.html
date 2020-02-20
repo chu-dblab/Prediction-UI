@@ -244,12 +244,17 @@
   <!-- 查詢結果區域 -->
   <div id="result-area">
     <div class="banner">
-      <a href="http://www1.chu.edu.tw/p/412-1000-82.php?Lang=zh-tw" target="_blank">
-        <img src="../images/banner/CHU.gif">
-      </a>
-      <a href="#" data-reveal-id="user-input-data-modal">
-        <img src="https://picsum.photos/id/684/728/90" alt="">
-      </a>
+      <div>
+        <a href="http://www1.chu.edu.tw/p/412-1000-82.php?Lang=zh-tw" target="_blank">
+          <img src="../images/banner/CHU.gif">
+        </a>
+      </div>
+      <div id ="apply" class="hide-img">
+        <a href="#" data-reveal-id="user-input-data-modal">
+          <img src="https://picsum.photos/id/684/728/90" alt="">
+        </a>
+      </div>
+      
     </div>
     <section id="result-suggest-school-departments-area">
       <h2>落點分析結果 <small>(依薪資排序)</small></h2>
@@ -390,7 +395,7 @@
   </div>
 
   <!-- 使用者輸入資訊 -->
-  <div id="user-input-data-modal" class="reveal-modal" data-reveal>
+  <div id="user-input-data-modal" class="reveal-modal tiny" data-reveal>
     <h2>註冊</h2>
       <div id="registerMessage">
       </div>
@@ -402,14 +407,14 @@
             </div>
 
             <div class="large-12 columns">
-              <label for="register-email">Line ID</label>
-              <input type="text" id="register-lineID" placeholder="請輸入LineID">
+              <label for="register-phone">電話</label>
+              <input type="text" id="register-phone" placeholder="請輸入手機號碼" required>
             </div>
 
             <div class="large-12 columns">
                 <label for="select-location">縣市</label>
-                  <select id="select-location" class="form-control" required>
-                    <option value="">請選擇</option>
+                <select id="select-location" class="form-control" required>
+                  <option value="">請選擇</option>
                   <option value="基隆市">基隆市</option>
                   <option value="臺北市">臺北市</option>
                   <option value="新北市">新北市</option>
@@ -431,7 +436,12 @@
                   <option value="連江縣">連江縣</option>
                   <option value="金門縣">金門縣</option>
                   <option value="其他">其他</option>
-                  </select>
+                </select>
+            </div>
+
+            <div class="large-12 columns">
+              <label for="register-address">地址</label>
+              <input type="text" id="register-address" placeholder="請輸入地址" required>
             </div>
 
             <div class="large-12 columns">
@@ -449,6 +459,18 @@
                 <option value="其他">其他</option>
               </select>
             </div>
+
+            <div class="large-12 columns">
+              <label>是否有意願就讀中華大學</label>
+              <input type="radio" id="register-isApplyCHUTrue" name="yesno" value="1"><label for="register-isApplyCHU">是</label>
+              <input type="radio" id="register-isApplyCHUFalse" name="yesno" value="0"><label for="register-isApplyCHU">否</label>
+            </div>
+
+            <div class="large-12 columns">
+              <label for="">有興趣的科系</label>
+              <input type="text" id="interest" placeholder="請輸入有興趣的科系" required>
+            </div>
+
             <button id="send-register-btn" type="submit" class="button">送出</button>
             <a class="close-reveal-modal">&#215;</a>
           </div>
@@ -475,9 +497,9 @@
     $('#result-area table').floatThead({
       scrollingTop: convertRem(6),
       zIndex: 5,
-      useAbsolutePositioning: true}
-    );
-    //alert("2019年學測落點分析還未正式上線，目前僅供試用。");
+      useAbsolutePositioning: true
+    });
+    alert("2020年學測落點分析還未正式上線，目前僅供試用。");
   };
 </script>
 <!-- ref:include analytics -->
