@@ -29,7 +29,7 @@ function getRegisterData() {
       "identity": select_identity,
       "interestedDepart": input_interest,
       "isApplyCHU": input_isApplyCHU,
-      "user_input": data
+      "user_input": getData()
   };
 
   return register_data;
@@ -723,219 +723,69 @@ $('#select-location').change(function(e) {
     }
 });
 
-function resetRegisterForm() {
-  $('#register-email').val('');
-  $('#register-lineID').val('');
-  $('#select-location').empty();
-  $('#select-school').empty();
-  $('#select-identity').empty();
-  addLocationOption('','請選擇');
-  addLocationOption('基隆市','基隆市');
-  addLocationOption('臺北市','臺北市');
-  addLocationOption('新北市','新北市');
-  addLocationOption('桃園市','桃園市');
-  addLocationOption('新竹縣市','新竹縣市');
-  addLocationOption('苗栗縣','苗栗縣');
-  addLocationOption('臺中市','臺中市');
-  addLocationOption('彰化縣','彰化縣');
-  addLocationOption('南投縣','南投縣');
-  addLocationOption('雲林縣','雲林縣');
-  addLocationOption('嘉義縣市','嘉義縣市');
-  addLocationOption('臺南市','臺南市');
-  addLocationOption('高雄市','高雄市');
-  addLocationOption('屏東縣','屏東縣');
-  addLocationOption('宜蘭縣','宜蘭縣');
-  addLocationOption('花蓮縣','花蓮縣');
-  addLocationOption('臺東縣','臺東縣');
-  addLocationOption('澎湖縣','澎湖縣');
-  addLocationOption('連江縣','連江縣');
-  addLocationOption('金門縣','金門縣');
-  addLocationOption('其他','其他');
-  addSchoolOption('','請選擇');
-  addIdentityOption('','請選擇');
-  addIdentityOption('考生','考生');
-  addIdentityOption('家長','家長');
-  addIdentityOption('其他','其他');
-}
-
-// function resendEmail() {
-//   var mail = getLoginData();
-
-//   if(mail === ''){}
-//   else {
-//     $.ajax({
-//       // type: "GET",
-//       type: "POST",
-//       url:baseResendEmailUrl,
-//       headers: {
-//         "content-type": "application/x-www-form-urlencoded"
-//       },
-//       dataType: "json",
-//       data: "="+mail,
-//       beforeSend: function() {
-//         // 顯示處理中畫面
-//         $('input[type=submit]').prop( "disabled", true );
-//         // $('#myResendModal').modal('hide');
-//       },
-//       success: function(data){
-//         successDialogAlertMsg('loginMessage',data.message);
-//         $('input[type=submit]').prop( "disabled", false );
-//         // $('#myMessageModal').modal('show');
-//       },
-//       error: function(data){
-//         var jsonObj = JSON.parse(data.responseText);
-//         if(data.status == 406)
-//         {
-//           errorDialogAlertMsg('loginMessage',"<strong>錯誤！</strong> "+jsonObj.message);
-//           $('input[type=submit]').prop( "disabled", false );
-//           // $('#myMessageModal').modal('show');
-//         }
-//         else {
-//           errorDialogAlertMsg('loginMessage',"<strong>錯誤！</strong> 沒有網路連線");
-//           $('input[type=submit]').prop( "disabled", false );
-//           // $('#myMessageModal').modal('show');
-//         }
-//       }
-//     });
-//   }
-// }
-
-//按鈕事件
-// $('#enter-btn').click(function(e) {
-//     e.preventDefault();
-//     $(e.currentTarget).closest('ul').hide();
-//     $('#signin-email').val('');
-//     $('form#signin').fadeIn('fast');
-// });
-
-// $('#register-btn').click(function(e){
-//     e.preventDefault();
-//     $(e.currentTarget).closest('ul').hide();
-//     resetRegisterForm();
-//     $('form#register').fadeIn('fast');
-// });
-
-// $('#registerbtn').click(function(e){
-//     e.preventDefault();
-//     var email = $('#signin-email').val();
-//     resetRegisterForm();
-//     $('#register-email').val(email);
-//     $('form#register').fadeIn('fast');
-// });
-
-
-$('#send-register-btn').click(function (e){
-  var inputRegisterData = getRegisterData();
-
-  if( (inputRegisterData.email === '') ||
-  (inputRegisterData.phoneNumber === '') ||
-  (inputRegisterData.address === '') ||
-  (inputRegisterData.location === '') ||
-  (inputRegisterData.schoolName === '') ||
-  (inputRegisterData.identity === '') ||
-  (inputRegisterData.interestedDepart === '') ||
-  (inputRegisterData.isApplyCHU === '') ||
-  (inputRegisterData.user_input === '')) {}
-  // 沒有問題，開始向後端要資料
-  else {
+$('#send-register-btn').click(function (e) {
     e.preventDefault();
+    var inputRegisterData = getRegisterData();
 
-    $.ajax({
-      type: "POST",
-      url:baseRegisterSystemSingUpUrl,
-      headers: {
-        "content-type": "application/json"
-      },
-      dataType: "json",
-      data: JSON.stringify(inputRegisterData),
-      beforeSend: function() {
-        // 顯示處理中畫面
-        $('input[type=submit]').prop( "disabled", true );
-      },
-      success: function(data){
-        // 隱藏處理中畫面
-        if(data.status == 201)
-        {
-          $('input[type=submit]').prop( "disabled", false );
-          // $('#myRegisterModal').modal('hide');
-          errorDialogAlertMsg('registerMessage',"<strong>註冊失敗！</strong> "+data.message);
-          // $('#myMessageModal').modal('show');
-        }
-        else{
-          $('input[type=submit]').prop( "disabled", false );
-          // $('#myRegisterModal').modal('hide');
-          successDialogAlertMsg('registerMessage',"<strong>輸入完成！</strong> "+data.message);
-          // $('#myMessageModal').modal('show');
-          // $('#signin-email').val('');
-          // $('#login-modal').foundation('reveal', 'open');
-        }
-      },
-      error: function(data){
-        // 隱藏處理中畫面
-        if(data.status == 400)
-        {
-          errorDialogAlertMsg('registerMessage',"<strong>錯誤！</strong> "+data.message);
-          $('input[type=submit]').prop( "disabled", false );
-          // $('#myMessageModal').modal('show');
-        }
-        else {
-          errorDialogAlertMsg('registerMessage',"<strong>錯誤！</strong> 沒有網路連線");
-          $('input[type=submit]').prop( "disabled", false );
-          // $('#myMessageModal').modal('show');
-        }
-      }
-    });
-  }
+    //alert(inputRegisterData);
+
+    if( (inputRegisterData.email === '') ||
+    (inputRegisterData.phoneNumber === '') ||
+    (inputRegisterData.address === '') ||
+    (inputRegisterData.location === '') ||
+    (inputRegisterData.schoolName === '') ||
+    (inputRegisterData.identity === '') ||
+    (inputRegisterData.interestedDepart === '') ||
+    (inputRegisterData.isApplyCHU === '') ||
+    (inputRegisterData.user_input === '')) {}
+    // 沒有問題，開始向後端要資料
+    else {
+        e.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url:baseRegisterSystemSingUpUrl,
+          headers: {
+            "content-type": "application/json"
+          },
+          dataType: "json",
+          data: JSON.stringify(inputRegisterData),
+          beforeSend: function() {
+            // 顯示處理中畫面
+            $('input[type=submit]').prop( "disabled", true );
+          },
+          success: function(data){
+            // 隱藏處理中畫面
+            if(data.status == 201)
+            {
+              $('input[type=submit]').prop( "disabled", false );
+              // $('#myRegisterModal').modal('hide');
+              errorDialogAlertMsg('registerMessage',"<strong>註冊失敗！</strong> "+data.message);
+              // $('#myMessageModal').modal('show');
+            }
+            else{
+              $('input[type=submit]').prop( "disabled", false );
+              // $('#myRegisterModal').modal('hide');
+              successDialogAlertMsg('registerMessage',"<strong>輸入完成！</strong> "+data.message);
+              
+              // $('#signin-email').val('');
+               $('#user-input-data-modal').modal('hide');
+            }
+          },
+          error: function(data){
+            // 隱藏處理中畫面
+            if(data.status == 400)
+            {
+              errorDialogAlertMsg('registerMessage',"<strong>錯誤！</strong> "+data.message);
+              $('input[type=submit]').prop( "disabled", false );
+              // $('#myMessageModal').modal('show');
+            }
+            else {
+              errorDialogAlertMsg('registerMessage',"<strong>錯誤！</strong> 沒有網路連線");
+              $('input[type=submit]').prop( "disabled", false );
+              // $('#myMessageModal').modal('show');
+            }
+          }
+        });
+    }
 });
-
-// $('#signbtn').click(function(e) {
-//   var inputLoginData = getLoginData();
-
-//   if(inputLoginData === ''){}
-//   // 沒有問題，開始向後端要資料
-//   else {
-//     e.preventDefault();
-
-//     $.ajax({
-//       // type: "GET",
-//       type: "POST",
-//       url:baseRegisterSystemLoginUrl,
-//       headers: {
-//         "content-type": "application/x-www-form-urlencoded"
-//       },
-//       dataType: "json",
-//       data: "="+inputLoginData,
-//       beforeSend: function() {
-//         // 顯示處理中畫面
-//         $('input[type=submit]').prop( "disabled", true );
-//       },
-//       success: function(data){
-//         // 隱藏處理中畫面
-//           successDialogAlertMsg('loginMessage',"<strong>"+data.message+"</strong>");
-//           $('input[type=submit]').prop( "disabled", false );
-//           $('#login-modal').foundation('reveal', 'close');
-//       },
-//       error: function(data){
-//         // 隱藏處理中畫面
-//         var jsonObj = JSON.parse(data.responseText);
-//         if(data.status == 404)
-//         {
-//           errorDialogAlertMsg('loginMessage',"<strong>錯誤！</strong> "+jsonObj.message);
-//           $('input[type=submit]').prop( "disabled", false );
-//           // $('#myMessageModal').modal('show');
-//         }
-//         else if(data.status == 401)
-//         {
-//           resendDialogAlertMsg('loginMessage',jsonObj.message);
-//           $('input[type=submit]').prop( "disabled", false );
-//           // $('#myResendModal').modal('show');
-//         }
-//         else {
-//           errorDialogAlertMsg('loginMessage',"<strong>錯誤！</strong> 沒有網路連線");
-//           $('input[type=submit]').prop( "disabled", false );
-//           // $('#myMessageModal').modal('show');
-//         }
-//       }
-//     });
-//   }
-// });
