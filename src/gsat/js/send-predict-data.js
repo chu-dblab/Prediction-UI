@@ -190,13 +190,13 @@ function addData(did, uname, uurl, dname, durl, salary, salaryUrl, lastCriterion
   }
 
   var rateOfThisYear_tooltip, rateOfThisYear_info_icon, rateOfThisYear_change_class;
-  if(change !== null) {
+  if(change !== null || change !== "") {
     rateOfThisYear_tooltip = ' data-tooltip aria-haspopup="true" data-tooltip-title="'+change +'"';
     // rateOfThisYear_info_icon = '<i class="fi-info"></i>';
     rateOfThisYear_change_class = ' change';
   }
   else {
-    rateOfThisYear_tooltip = '';
+    rateOfThisYear_tooltip = 'iii';
     // rateOfThisYear_info_icon = '';
     rateOfThisYear_change_class = '';
   }

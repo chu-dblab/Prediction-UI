@@ -44,6 +44,14 @@ function successDialogAlertMsg(id, text) {
   $(document).foundation('alert', 'reflow');
 }
 
+function infoDialogAlertMsg(id,text) {
+  var alertArea = $('#'+id);
+  alertArea.empty();
+  // alertArea.append('<div class="modal-header modal-header-danger"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myMessageModalLabel">'+text+'</h4></div>');
+  alertArea.append('<div data-alert class="alert-box info radius">    '+text+'    <a href="#" class="close">&times;</a>  </div>');
+  $(document).foundation('alert', 'reflow');
+}
+
 function errorDialogAlertMsg(id ,text) {
   var alertArea = $('#'+id);
   alertArea.empty();
@@ -753,10 +761,12 @@ $('#send-register-btn').click(function (e) {
           beforeSend: function() {
             // 顯示處理中畫面
             $('input[type=submit]').prop( "disabled", true );
+            infoDialogAlertMsg('registerMessage',"請稍後，資料傳送中...");
+            
           },
           success: function(data){
             // 隱藏處理中畫面
-            if(data.status == 201)
+            if(data.status == 400)
             {
               $('input[type=submit]').prop( "disabled", false );
               // $('#myRegisterModal').modal('hide');
@@ -769,7 +779,7 @@ $('#send-register-btn').click(function (e) {
               successDialogAlertMsg('registerMessage',"<strong>輸入完成！</strong> "+data.message);
               
               // $('#signin-email').val('');
-               $('#user-input-data-modal').modal('hide');
+               //$('#user-input-data-modal').modal('hide');
             }
           },
           error: function(data){
