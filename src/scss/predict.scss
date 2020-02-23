@@ -3,743 +3,943 @@
 
 /* 分數輸入區 */
 header {
-  @include header(#ffffff, black, none, orange);
+    @include header(#ffffff, black, none, orange);
 }
 
 #header {
 
-  padding-top: 8rem;
-  @media #{$small-only} {
-    padding-top: 0;
-  }
-  background: #69968f;
-  overflow: hidden;
-  box-shadow: 0 0.2rem 2rem gray;
-  h2, h3, p, label {color: white;}
+    padding-top: 8rem;
 
-  #input-area {
-    margin: 0 auto;
-    width: 90%;
-  }
+    @media #{$small-only} {
+        padding-top: 0;
+    }
 
-  h2 {
-    font-size: 1.2rem;
-    small {
-      font-size: 0.9rem;
-      color: white;
-    }
-  }
+    background: #69968f;
+    overflow: hidden;
+    box-shadow: 0 0.2rem 2rem gray;
 
-  h3 {
-    font-size: 1.0rem;
-    small {
-      font-size: 0.7rem;
-      color: white;
-    }
-  }
-
-  /* 選取薪資 */
-  #input-expect-salary-area {
-    label>h2 {
-      float: left;
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-    input {
-      width: 8em;
-      display: inline;
-      margin-left: 1em;
-    }
-    span {
-      display: inline;
-      font-size: 1.3rem;
-      margin-left: 1em;
-      position: relative;
-      top: 0.1em;
-    }
-    p {
-      @media #{$medium-up} {
-        display: inline;
-      }
-      small {
+    h2,
+    h3,
+    p,
+    label {
         color: white;
-        font-size: 1em;
-      }
     }
 
-    /* @include grid-column(6); */
-    /* float: left; */
-  }
+    #input-area {
+        margin: 0 auto;
+        width: 90%;
+    }
 
-  .score-grade {
-    color: #ffde00;
-  }
-
-  #total-gsat-score {
     h2 {
-      display: inline;
-      margin-right: 1.2em;
+        font-size: 1.2rem;
+
+        small {
+            font-size: 0.9rem;
+            color: white;
+        }
     }
-    span {
-      font-size: 1.5em;
-      color: white;
-      border: 2px white solid;
-      padding-left: 1em;
-      padding-right: 1em;
+
+    h3 {
+        font-size: 1.0rem;
+
+        small {
+            font-size: 0.7rem;
+            color: white;
+        }
     }
+
+    /* 選取薪資 */
+    #input-expect-salary-area {
+        label>h2 {
+            float: left;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        input {
+            width: 8em;
+            display: inline;
+            margin-left: 1em;
+        }
+
+        span {
+            display: inline;
+            font-size: 1.3rem;
+            margin-left: 1em;
+            position: relative;
+            top: 0.1em;
+        }
+
+        p {
+            @media #{$medium-up} {
+                display: inline;
+            }
+
+            small {
+                color: white;
+                font-size: 1em;
+            }
+        }
+
+        /* @include grid-column(6); */
+        /* float: left; */
+    }
+
     .score-grade {
-      margin-left: 0;
-      font-size: 0.8em;
-      border: 0;
-      color: #ffde00;
-    }
-    /* @include grid-column(6); */
-    @media #{$medium-up} {
-      text-align: right;
-      margin-top: -3em;
-      margin-bottom: 2.5em;
-    }
-  }
-
-
-  /* 所有數字輸入框 */
-  input[type="number"], select {
-    box-shadow: inset 0 0 0 0;
-    background: none;
-    border: 0;
-    border-bottom: 2px solid white;
-    color: white;
-    font-size: 1.1em;
-    text-align: center;
-    height: 2.1em;
-    -moz-appearance:textfield;
-  }
-  select {
-    // 修正在Chrome不會置中的問題
-    -webkit-padding-start: 50%;
-  }
-  option {
-    color: white;
-    background: #8AB9B2;
-  }
-
-  /* 隱藏+1-1按鈕 */
-  input[type="number"]::-webkit-outer-spin-button,
-  input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* 輸入學測指考分數 */
-  #input-ast-score ,#input-gsat-score {
-    label {
-      font-size: 1em;
-      text-align: center;
-    }
-    .score-grade {
-      margin-left: 0.7em;
-      font-size: 0.8em;
-    }
-    ul li { margin-bottom: -1em; }
-
-    @media #{$small-only} {
-      ul {
-        @include block-grid(2);
-      }
-    }
-//    @media #{$small-only} {
-//      ul {
-//        @include block-grid(1);
-//        width: 100%;
-//        label {
-//          display: table;
-//          width: 100%;
-//          span {
-//            display: table-cell;
-//            width: 4em;
-//          }
-//          input {
-//            display: table-cell;
-//            width: 100%;
-//            margin: 0;
-//          }
-//        }
-//      }
-//    }
-  }
-
-  #input-ast-score {
-    @media #{$medium-up} {
-      ul {
-        @include block-grid(5);
-      }
-    }
-    @media #{$large-up} {
-      ul {
-        @include block-grid(10);
-      }
-    }
-  }
-
-  #input-gsat-score {
-    @media #{$small-only} {
-      margin-top: 2em;
-    }
-    @media #{$medium-up} {
-      ul {
-        @include block-grid(6);
-      }
-    }
-  }
-
-  /* 選取學群 */
-  #input-department-group-area ,#input-state-group-area{
-    h2, h3 { float:left; width: 4em; margin-right: 1em; }
-    p {
-      margin-left: -9em;
-      padding-left: 9.5em;
-      width: 100%;
-    }
-    a {
-      padding: 0.3rem;
-      color: white;
-      border-bottom: 2px solid white;
-      height: 2.2em;
-      margin-bottom: 1em;
-    }
-    a:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-    p, .more-button {
-      display: inline-block; margin-top: 0.3em;
-    }
-    .more-button {
-      float: right;
+        color: #ffde00;
     }
 
-    /* 選取學群的checkbox區域 */
-    #input-department-group-choose-area ,#input-state-group-choose-area {
-      transition: all 0.7s ease;
-      width: 100%;
-      @media #{$small-only} {
-        ul {
-          @include block-grid(2);
+    #total-gsat-score {
+        h2 {
+            display: inline;
+            margin-right: 1.2em;
         }
-      }
-      @media #{$medium-up} {
-        ul {
-          @include block-grid(5);
-        }
-      }
-      @media #{$large-up} {
-        ul {
-          @include block-grid(7);
-        }
-      }
 
-      ul li span {
-        border: 2px solid white;
-        border-radius: 10px;
-        padding: 0.5rem;
-        display: inline-block;
-        width: 100%;
+        span {
+            font-size: 1.5em;
+            color: white;
+            border: 2px white solid;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        .score-grade {
+            margin-left: 0;
+            font-size: 0.8em;
+            border: 0;
+            color: #ffde00;
+        }
+
+        /* @include grid-column(6); */
+        @media #{$medium-up} {
+            text-align: right;
+            margin-top: -3em;
+            margin-bottom: 2.5em;
+        }
+    }
+
+
+    /* 所有數字輸入框 */
+    input[type="number"],
+    select {
+        box-shadow: inset 0 0 0 0;
+        background: none;
+        border: 0;
+        border-bottom: 2px solid white;
+        color: white;
+        font-size: 1.1em;
         text-align: center;
-      }
-      ul li span:hover {
-        box-shadow: 0 0 10px white;
-      }
-      ul li input[type="checkbox"] {
-        display: none;
-      }
-      ul li input[type="checkbox"]:checked+span {
-        background: #567771;
-        box-shadow: 0 0 10px white;
-      }
+        height: 2.1em;
+        -moz-appearance: textfield;
     }
 
-    #input-department-group-choose-area.hidden, #input-state-group-choose-area.hidden {
-      position: absolute;
-      top: -1000em;
-      left: -1000em;
-      height: 0;
-      padding: 0 10px;
-      opacity: 0;
+    select {
+        // 修正在Chrome不會置中的問題
+        -webkit-padding-start: 50%;
     }
-  }
 
-  #input-school-area {
-    /* @include grid-row; */
+    option {
+        color: white;
+        background: #8AB9B2;
+    }
 
-    @media #{$small-only} {
-      #input-university-group-area{
-        @include grid-column(12);
-      }
+    /* 隱藏+1-1按鈕 */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
-    @media #{$medium-up} {
-      #input-university-group-area{
-        @include grid-column(3);
-      }
-    }
-    @media #{$large-up} {
-      #input-university-group-area{
-        @include grid-column(2);
-      }
-    }
-  }
 
-  #input-university-group-area{
+    /* 輸入學測指考分數 */
+    #input-ast-score,
+    #input-gsat-score {
+        label {
+            font-size: 1em;
+            text-align: center;
+        }
 
-    h2 {
-      float: left;
-      margin-right: 2em;
-      margin-top: 0.5em;
+        .score-grade {
+            margin-left: 0.7em;
+            font-size: 0.8em;
+        }
+
+        ul li {
+            margin-bottom: -1em;
+        }
+
+        @media #{$small-only} {
+            ul {
+                @include block-grid(2);
+            }
+        }
+
+        //    @media #{$small-only} {
+        //      ul {
+        //        @include block-grid(1);
+        //        width: 100%;
+        //        label {
+        //          display: table;
+        //          width: 100%;
+        //          span {
+        //            display: table-cell;
+        //            width: 4em;
+        //          }
+        //          input {
+        //            display: table-cell;
+        //            width: 100%;
+        //            margin: 0;
+        //          }
+        //        }
+        //      }
+        //    }
     }
-    ul li {
-      list-style: none;
-      display: inline;
-      label {
-        display: inline;
-        margin-right: 1.8em;
-      }
+
+    #input-ast-score {
+        @media #{$medium-up} {
+            ul {
+                @include block-grid(5);
+            }
+        }
+
+        @media #{$large-up} {
+            ul {
+                @include block-grid(10);
+            }
+        }
     }
-    label {
-      font-size: 1.2em;
+
+    #input-gsat-score {
+        @media #{$small-only} {
+            margin-top: 2em;
+        }
+
+        @media #{$medium-up} {
+            ul {
+                @include block-grid(6);
+            }
+        }
     }
-    ul li input[type="checkbox"]+span::before {
-      font-size: 1.5em;
-      margin-right: 0.5em;
+
+    /* 選取學群 */
+    #input-department-group-area,
+    #input-state-group-area {
+
+        h2,
+        h3 {
+            float: left;
+            width: 4em;
+            margin-right: 1em;
+        }
+
+        p {
+            margin-left: -9em;
+            padding-left: 9.5em;
+            width: 100%;
+        }
+
+        a {
+            padding: 0.3rem;
+            color: white;
+            border-bottom: 2px solid white;
+            height: 2.2em;
+            margin-bottom: 1em;
+        }
+
+        a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        p,
+        .more-button {
+            display: inline-block;
+            margin-top: 0.3em;
+        }
+
+        .more-button {
+            float: right;
+        }
+
+        /* 選取學群的checkbox區域 */
+        #input-department-group-choose-area,
+        #input-state-group-choose-area {
+            transition: all 0.7s ease;
+            width: 100%;
+
+            @media #{$small-only} {
+                ul {
+                    @include block-grid(2);
+                }
+            }
+
+            @media #{$medium-up} {
+                ul {
+                    @include block-grid(5);
+                }
+            }
+
+            @media #{$large-up} {
+                ul {
+                    @include block-grid(7);
+                }
+            }
+
+            ul li span {
+                border: 2px solid white;
+                border-radius: 10px;
+                padding: 0.5rem;
+                display: inline-block;
+                width: 100%;
+                text-align: center;
+            }
+
+            ul li span:hover {
+                box-shadow: 0 0 10px white;
+            }
+
+            ul li input[type="checkbox"] {
+                display: none;
+            }
+
+            ul li input[type="checkbox"]:checked+span {
+                background: #567771;
+                box-shadow: 0 0 10px white;
+            }
+        }
+
+        #input-department-group-choose-area.hidden,
+        #input-state-group-choose-area.hidden {
+            position: absolute;
+            top: -1000em;
+            left: -1000em;
+            height: 0;
+            padding: 0 10px;
+            opacity: 0;
+        }
     }
-    ul li input[type="checkbox"]+span::before {
-      content: '\2610';
-      width: 1em;
+
+    #input-school-area {
+        /* @include grid-row; */
+
+        @media #{$small-only} {
+            #input-university-group-area {
+                @include grid-column(12);
+            }
+        }
+
+        @media #{$medium-up} {
+            #input-university-group-area {
+                @include grid-column(3);
+            }
+        }
+
+        @media #{$large-up} {
+            #input-university-group-area {
+                @include grid-column(2);
+            }
+        }
     }
-    ul li input[type="checkbox"]:checked+span::before {
-      content: '\2611';
-      width: 1em;
-    }
-    ul li input[type="checkbox"] {
-      display: none;
-    }
-    ul li input[type="checkbox"]:checked+span {
-      /* background: #567771;
+
+    #input-university-group-area {
+
+        h2 {
+            float: left;
+            margin-right: 2em;
+            margin-top: 0.5em;
+        }
+
+        ul li {
+            list-style: none;
+            display: inline;
+
+            label {
+                display: inline;
+                margin-right: 1.8em;
+            }
+        }
+
+        label {
+            font-size: 1.2em;
+        }
+
+        ul li input[type="checkbox"]+span::before {
+            font-size: 1.5em;
+            margin-right: 0.5em;
+        }
+
+        ul li input[type="checkbox"]+span::before {
+            content: '\2610';
+            width: 1em;
+        }
+
+        ul li input[type="checkbox"]:checked+span::before {
+            content: '\2611';
+            width: 1em;
+        }
+
+        ul li input[type="checkbox"] {
+            display: none;
+        }
+
+        ul li input[type="checkbox"]:checked+span {
+            /* background: #567771;
       box-shadow: 0 0 10px white; */
-    }
-  }
-
-  #input-action-area {
-    float: right;
-    @media #{$medium-up} {
-      margin-top: -3em;
-    }
-    ul li {
-      list-style-type: none;
-      display: inline-block;
-    }
-    a.research-methods-link {
-      position: relative;
-      top: 0.5rem;
-      text-decoration: underline;
-      color: white;
-    }
-    a.research-methods-link:hover {
-      color: #c1e3e3;
-    }
-    input[type="submit"] {
-      margin-left: 1em;
-      border: 2px solid white;
-      border-radius: 10px;
-      box-shadow: 0 0 5px white;
-      background: none;
-      padding: 0.5em 2.5em;
-      font-size: 1em;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    input[type="submit"]:hover {
-      background: rgba(124, 255, 129, 0.55);
+        }
     }
 
-    input[type="submit"]:disabled {
-      background: rgba(60, 60, 60, 0.7);
-      cursor: not-allowed;
-      box-shadow: none;
-      color: white;
-      border: 2px solid gray;
+    #input-action-area {
+        float: right;
+
+        @media #{$medium-up} {
+            margin-top: -3em;
+        }
+
+        ul li {
+            list-style-type: none;
+            display: inline-block;
+        }
+
+        a.research-methods-link {
+            position: relative;
+            top: 0.5rem;
+            text-decoration: underline;
+            color: white;
+        }
+
+        a.research-methods-link:hover {
+            color: #c1e3e3;
+        }
+
+        input[type="submit"] {
+            margin-left: 1em;
+            border: 2px solid white;
+            border-radius: 10px;
+            box-shadow: 0 0 5px white;
+            background: none;
+            padding: 0.5em 2.5em;
+            font-size: 1em;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: rgba(124, 255, 129, 0.55);
+        }
+
+        input[type="submit"]:disabled {
+            background: rgba(60, 60, 60, 0.7);
+            cursor: not-allowed;
+            box-shadow: none;
+            color: white;
+            border: 2px solid gray;
+        }
     }
-  }
 }
 
 #container {
-  clear: both;
-  padding-top: 2rem;
-  #result-area, #about, footer {
-    margin: 0 auto;
-    width: 90%;
-  }
+    clear: both;
+    padding-top: 2rem;
 
-  #result-area {
-    h2 {
-      font-size: 2em;
-      margin-right: 0.5em;
-      small {
-        font-size: 0.6em;
-      }
-    }
-    a.research-methods-link {
-      text-decoration: underline;
-    }
-
-    h2, h3 {
-      margin-top: 1em;
-    }
-
-    .banner {
-      //@include grid-row;
-      //@include grid-column(12);
-      text-align: center;
-      width: 750px;
-      margin: 0 auto;
-      img {
-        display: block;
+    #result-area,
+    #about,
+    footer {
         margin: 0 auto;
-      }
+        width: 90%;
     }
 
-    @keyframes chu-welfare-ani {
-        0%   {color: rgba(0, 0, 0, 0); left:100px;}
-        25%   {color: rgba(0, 0, 0, 0); left:100px;}
-        100% {color: #D88511; left:0px;}
-    }
-    #chu-welfare {
-      a {
-        color: #D88511;
-        font-weight: bold;
-        position: relative;
-        animation-name: chu-welfare-ani;
-        animation-duration: 3s;
-        &:hover {
-          color: #ff9e14;
-          text-decoration: underline;
+    #result-area {
+        h2 {
+            font-size: 2em;
+            margin-right: 0.5em;
+
+            small {
+                font-size: 0.6em;
+            }
         }
-      }
-      &.hidden {
-        display: none;
-      }
-    }
-    #chu-welfare-salary a {
-      font-size: 1.2rem;
-      color: #D88511;
 
-      &:hover {
-        color: #ff9e14;
-        text-decoration: underline;
-      }
-    }
-
-    @media #{$medium-up} {
-      h2, h3 {
-        float: left;
-      }
-      a.research-methods-link {
-        float: left;
-        margin-top: 2.1em;
-      }
-      a.research-methods-link, #chu-welfare {
-        margin-bottom: 0;
-      }
-      #chu-welfare+p {
-        margin-top: 1em;
-      }
-
-      #chu-welfare {
-        margin-top: 2.5em;
-        a {
-
-          margin-left: 1em;
+        a.research-methods-link {
+            text-decoration: underline;
         }
-      }
 
-      a.research-methods-link {
-        font-size: 1.3rem;
-        margin-top: 2.1em;
-      }
-      #blessings-area {
-        float: left;
-      }
-      #function-info {
-        float: right;
-        position: relative;
-        margin-bottom: -3em;
-      }
-      #salary-source-area {
-        clear: both;
-      }
-    }
-    @media #{$large-up} {
-      #blessings-area {
-        position: relative;
-        top: 2em;
-        width: 35%;
-      }
+        h2,
+        h3 {
+            margin-top: 1em;
+        }
+
+        .banner {
+            //@include grid-row;
+            //@include grid-column(12);
+            text-align: center;
+            margin: 0 auto;
+
+            img {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        @keyframes chu-welfare-ani {
+            0% {
+                color: rgba(0, 0, 0, 0);
+                left: 100px;
+            }
+
+            25% {
+                color: rgba(0, 0, 0, 0);
+                left: 100px;
+            }
+
+            100% {
+                color: #D88511;
+                left: 0px;
+            }
+        }
+
+        #chu-welfare {
+            a {
+                color: #D88511;
+                font-weight: bold;
+                position: relative;
+                animation-name: chu-welfare-ani;
+                animation-duration: 3s;
+
+                &:hover {
+                    color: #ff9e14;
+                    text-decoration: underline;
+                }
+            }
+
+            &.hidden {
+                display: none;
+            }
+        }
+
+        #chu-welfare-salary a {
+            font-size: 1.2rem;
+            color: #D88511;
+
+            &:hover {
+                color: #ff9e14;
+                text-decoration: underline;
+            }
+        }
+
+        @media #{$medium-up} {
+
+            h2,
+            h3 {
+                float: left;
+            }
+
+            a.research-methods-link {
+                float: left;
+                margin-top: 2.1em;
+            }
+
+            a.research-methods-link,
+            #chu-welfare {
+                margin-bottom: 0;
+            }
+
+            #chu-welfare+p {
+                margin-top: 1em;
+            }
+
+            #chu-welfare {
+                margin-top: 2.5em;
+
+                a {
+
+                    margin-left: 1em;
+                }
+            }
+
+            a.research-methods-link {
+                font-size: 1.3rem;
+                margin-top: 2.1em;
+            }
+
+            #blessings-area {
+                float: left;
+            }
+
+            #function-info {
+                float: right;
+                position: relative;
+                margin-bottom: -3em;
+            }
+
+            #salary-source-area {
+                clear: both;
+            }
+        }
+
+        @media #{$large-up} {
+            #blessings-area {
+                position: relative;
+                top: 2em;
+                width: 35%;
+            }
+        }
+
+        @keyframes bigger-ani {
+            0% {
+                font-size: 0;
+            }
+
+            100% {
+                font-size: 1.8em;
+            }
+        }
+
+        #blessings-area {
+            padding-top: 1em;
+            padding-bottom: 1em;
+
+            @media #{$medium-only} {
+                clear: both;
+            }
+
+            p {
+                width: 100%;
+                text-align: center;
+                font-size: 1.8em;
+                color: orange;
+                font-weight: bold;
+                text-shadow: 0 0 20px yellow;
+                animation-name: bigger-ani;
+                animation-duration: 2s;
+
+                @media #{$large-up} {
+                    text-align: right;
+                }
+            }
+        }
+
+        table {
+            clear: both;
+            margin-top: 1em;
+            width: 100%;
+        }
+
+        tr.warning {
+            //background: #ffedf7;
+        }
+
+        tr.chu {
+            background: #fff8e7;
+        }
+
+        td.warning {
+            color: red;
+        }
+
+        td.change {
+            color: purple;
+        }
+
+        tfoot tr td {
+            text-align: center;
+        }
+
+        td.big-row {
+            padding-left: 0em;
+            text-align: center;
+        }
+
+        /* Tooltip */
+        /* http://muki.tw/tech/pure-css-tooltip-data-tag/ */
+        span[data-tooltip],
+        a[data-tooltip] {
+            position: relative;
+            display: inline-block;
+
+            &:hover {
+
+                &:before,
+                &:after {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+
+            &:before {
+                content: attr(data-tooltip-title);
+                background: #4d4d4d;
+                border-radius: 10px;
+                color: #fff;
+                width: 15em;
+                padding: .8em 1em;
+                position: absolute;
+                left: 0;
+                top: 2.5em;
+                z-index: 2;
+                margin-left: -3em;
+                text-align: center;
+
+                @media #{$small-only} {
+                    margin-left: -5.5em;
+                }
+            }
+
+            &:after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-width: 8px;
+                border-style: solid;
+                border-color: transparent transparent #4d4d4d transparent;
+                left: 0;
+                margin-left: 30%;
+                top: 1.5em;
+            }
+
+            &:before,
+            &:after {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease-out;
+            }
+        }
+
+        /*表格欄位大小調整*/
+        @media #{$large-up} {
+
+            thead th:nth-child(1),
+            tbody th:nth-child(1) {
+                width: 7rem;
+            }
+
+            thead th:nth-child(4),
+            tbody td:nth-child(4) {
+                width: 9rem;
+            }
+
+            thead th:nth-child(5),
+            tbody td:nth-child(5),
+            thead th:nth-child(6),
+            tbody td:nth-child(6) {
+                width: 12.5rem;
+            }
+
+            thead th:nth-child(7),
+            tbody td:nth-child(7) {
+                width: 6rem;
+            }
+        }
+
+        /* 螢幕較小的版型 */
+        @media #{$small-only} {
+            table {
+                border: 0;
+            }
+
+            table,
+            thead,
+            tbody,
+            th,
+            td,
+            tr {
+                display: block;
+            }
+
+            tfoot {
+                display: inherit;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 1em;
+            }
+
+            th,
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 13em;
+                white-space: normal;
+                text-align: left;
+            }
+
+            th:before,
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 8em;
+                padding-right: 13px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+
+            th:before,
+            td:before {
+                content: attr(data-title);
+            }
+        }
+
+        @media #{$medium-up} {
+
+            th,
+            td {
+                text-align: center;
+            }
+
+            tbody {
+
+                td:nth-child(2),
+                td:nth-child(3) {
+                    text-align: left;
+                }
+            }
+        }
+
     }
 
-    @keyframes bigger-ani {
-        0%   { font-size: 0; }
-        100% { font-size: 1.8em; }
-    }
-    #blessings-area {
-      padding-top: 1em;
-      padding-bottom: 1em;
-      @media #{$medium-only} {
-        clear: both;
-      }
-      p {
+    #loading-area {
+        position: absolute;
         width: 100%;
         text-align: center;
-        font-size: 1.8em;
-        color: orange;
-        font-weight: bold;
-        text-shadow: 0 0 20px yellow;
-        animation-name: bigger-ani;
-        animation-duration: 2s;
-        @media #{$large-up} {
-          text-align: right;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        transition: all 0.5s linear;
+        background: white;
+        z-index: 10;
+        height: 100%;
+
+        &.hidden {
+            opacity: 0;
+            visibility: hidden;
         }
-      }
-    }
 
-    table {
-      clear: both;
-      margin-top: 1em;
-      width: 100%;
-    }
-
-    tr.warning {
-      //background: #ffedf7;
-    }
-    tr.chu {
-      background: #fff8e7;
-    }
-    td.warning {
-      color: red;
-    }
-    td.change {
-      color: purple;
-    }
-    tfoot tr td {
-      text-align: center;
-    }
-    td.big-row {
-      padding-left: 0em;
-      text-align: center;
-    }
-    /* Tooltip */
-    /* http://muki.tw/tech/pure-css-tooltip-data-tag/ */
-    span[data-tooltip], a[data-tooltip] {
-      position: relative;
-      display: inline-block;
-      &:hover {
-        &:before, &:after {
-          opacity: 1;
-          visibility: visible;
+        img {
+            width: 5rem;
+            height: 5rem;
         }
-      }
-      &:before {
-        content: attr(data-tooltip-title);
-        background: #4d4d4d;
-        border-radius: 10px;
-        color: #fff;
-        width: 15em;
-        padding: .8em 1em;
-        position: absolute;
-        left: 0;
-        top: 2.5em;
-        z-index: 2;
-        margin-left: -3em;
-        text-align: center;
-        @media #{$small-only} {
-          margin-left: -5.5em;
+
+        p {
+            margin-top: 1em;
+            font-size: 2rem;
         }
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-width: 8px;
-        border-style: solid;
-        border-color: transparent transparent #4d4d4d transparent;
-        left: 0;
-        margin-left: 30%;
-        top: 1.5em;
-      }
-      &:before, &:after {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease-out;
-      }
     }
 
-    /*表格欄位大小調整*/
-    @media #{$large-up} {
-      thead th:nth-child(1), tbody th:nth-child(1) {
-        width: 7rem;
-      }
-      thead th:nth-child(4), tbody td:nth-child(4) {
-        width: 9rem;
-      }
-      thead th:nth-child(5), tbody td:nth-child(5),
-      thead th:nth-child(6), tbody td:nth-child(6) {
-        width: 12.5rem;
-      }
-      thead th:nth-child(7), tbody td:nth-child(7) {
-        width: 6rem;
-      }
+    footer {
+        border-top: 1px solid black;
+        margin-top: 2em;
+        padding-bottom: 4em;
+
+        @include footer;
     }
-
-    /* 螢幕較小的版型 */
-    @media #{$small-only} {
-      table { border: 0; }
-      table, thead, tbody, th, td, tr { display: block; }
-      tfoot { display: inherit; }
-      thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-      }
-      tr {
-        border: 1px solid #ccc;
-        margin-bottom: 1em;
-      }
-      th, td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 13em;
-        white-space: normal;
-        text-align:left;
-      }
-      th:before, td:before {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 8em;
-        padding-right: 13px;
-        white-space: nowrap;
-        text-align:left;
-        font-weight: bold;
-      }
-      th:before, td:before { content: attr(data-title); }
-    }
-    @media #{$medium-up} {
-      th, td { text-align: center; }
-
-      tbody {
-        td:nth-child(2), td:nth-child(3) { text-align: left; }
-      }
-    }
-
-  }
-
-  #loading-area {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    transition: all 0.5s linear;
-    background: white;
-    z-index: 10;
-    height: 100%;
-
-    &.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    img { width: 5rem; height: 5rem; }
-    p { margin-top: 1em; font-size: 2rem; }
-  }
-
-  footer {
-    border-top: 1px solid black;
-    margin-top: 2em;
-    padding-bottom: 4em;
-
-    @include footer;
-  }
 }
 
 #research-methods-modal {
-  h2 { margin-bottom: 0.5em; }
-  strong { color: red; }
-  ul { margin-bottom: 0; }
+    h2 {
+        margin-bottom: 0.5em;
+    }
 
-  @media #{$medium-up} {
-    section:nth-child(2) {
-      ul {
-        float: left;
-        width: 48%;
-      }
-      img {
-        float: right;
-        width: 50%;
-      }
+    strong {
+        color: red;
     }
-    section:nth-child(3) {
-      clear: both;
+
+    ul {
+        margin-bottom: 0;
     }
-  }
+
+    @media #{$medium-up} {
+        section:nth-child(2) {
+            ul {
+                float: left;
+                width: 48%;
+            }
+
+            img {
+                float: right;
+                width: 50%;
+            }
+        }
+
+        section:nth-child(3) {
+            clear: both;
+        }
+    }
 }
 
 @media print {
-  header, #result-area h2+a {
-    display: none;
-  }
 
-  #header {
-    padding-top: 0;
-
-    #input-area {
-      border-bottom: 2px black solid;
-
-      #input-expect-salary-area {
-        p {display: none;}
-        * { margin-bottom: 0;}
-      }
-      #input-ast-score ul li, #input-gsat-score ul li {
-        display: inline-block;
-        label {
-          width: 6em;
-        }
-      }
-      #input-gsat-score ul {
-        margin-top: -0.5em;
-        li:last-child label {
-          position: relative;
-          top: 0.5em;
-        }
-      }
-      .more-button {
+    header,
+    #result-area h2+a {
         display: none;
-      }
-      #input-department-group-choose-area, #input-state-group-choose-area, #input-action-area {
+    }
+
+    #header {
+        padding-top: 0;
+
+        #input-area {
+            border-bottom: 2px black solid;
+
+            #input-expect-salary-area {
+                p {
+                    display: none;
+                }
+
+                * {
+                    margin-bottom: 0;
+                }
+            }
+
+            #input-ast-score ul li,
+            #input-gsat-score ul li {
+                display: inline-block;
+
+                label {
+                    width: 6em;
+                }
+            }
+
+            #input-gsat-score ul {
+                margin-top: -0.5em;
+
+                li:last-child label {
+                    position: relative;
+                    top: 0.5em;
+                }
+            }
+
+            .more-button {
+                display: none;
+            }
+
+            #input-department-group-choose-area,
+            #input-state-group-choose-area,
+            #input-action-area {
+                display: none;
+            }
+        }
+    }
+
+    table,
+    footer {
+        a[href]:after {
+            content: none !important;
+        }
+    }
+
+    table {
+        table-layout: auto;
+    }
+
+    div.floatThead-floatContainer {
         display: none;
-      }
     }
-  }
-  table, footer {
-    a[href]:after {
-      content: none !important;
-    }
-  }
-  table {
-    table-layout: auto;
-  }
-  div.floatThead-floatContainer {
-    display: none;
-  }
 }
 
 // .hide-img{

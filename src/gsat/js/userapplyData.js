@@ -10,6 +10,15 @@ $('input[type="radio"]').click(function () {
 
 });
 
+function checkGrade(data) {
+    if (data.Chinese == 0 && data.English == 0 && data.Math == 0 &&
+        data.Sicence == 0 && data.Society == 0) {
+        return false
+    } else {
+        return true
+    }
+}
+
 function getRegisterData() {
     //取得資料
     var input_email = document.getElementById('register-email').value;
@@ -103,8 +112,8 @@ function addIdentityOption(value, text) {
 }
 
 function phoneVlidate(data) {
-    $('#phone').val(data.phoneNumber);
-    $('#validate').foundation('reveal', 'open');
+    $('#phone').val(data.phone);
+    $('#user-input-data-modal').foundation('reveal', 'open');
 }
 
 //縣市對應高中
@@ -716,7 +725,12 @@ $('#send-register-btn').click(function (e) {
         (inputRegisterData.identity === '') ||
         (inputRegisterData.interestedDepart === '') ||
         (inputRegisterData.isApplyCHU === '') ||
-        (inputRegisterData.user_input === '')) {}
+        (inputRegisterData.user_input === '')) {
+        // do nothing
+    } else if (!checkGrade(inputRegisterData.user_input.grades.gsat)) {
+        errorDialogAlertMsg('registerMessage', "請先輸入您的學測落點分析條件之各項欄位");
+        $('#user-input-data-modal').fadeOut('slow');
+    }
     // 沒有問題，開始向後端要資料
     else {
         $.ajax({
@@ -743,8 +757,6 @@ $('#send-register-btn').click(function (e) {
                     $('input[type=submit]').prop("disabled", false);
                     $('#registerMessage').empty();
                     successDialogAlertMsg('registerMessage', "<strong>輸入完成！</strong> " + data.message);
-                    $('#user-input-data-modal').fadeOut('slow');
-                    phoneVlidate(inputRegisterData);
                 }
             },
             error: function (data) {
@@ -813,8 +825,9 @@ $('#validate-code').click(function (e) {
             },
             success: function (data) {
                 $('#registerMessage').empty();
-                successDialogAlertMsg('validateMessage', "<strong>發送完成！</strong> 請至您的手機查看簡訊");
-                $('#validate').foundation('reveal', 'close');
+                successDialogAlertMsg('validateMessage', "<strong>驗證成功！</strong>");
+                $('#validate').fadeOut('slow');
+                phoneVlidate(inputdata);
             },
             error: function (data) {
                 $('#registerMessage').empty();

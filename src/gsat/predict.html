@@ -285,6 +285,11 @@
         <!-- 查詢結果區域 -->
         <div id="result-area">
             <div class="banner">
+                <a href="#" data-reveal-id="validate-modal">
+                    <img src="../images/banner/109-banner-4.jpg" alt="">
+                </a>
+            </div>
+            <div class="banner">
                 <ul class="banner-orbit" data-orbit>
                     <li class="active">
                         <a href="http://www1.chu.edu.tw/p/412-1000-510.php?Lang=zh-tw" target="_blank">
@@ -301,13 +306,9 @@
                             <img src="../images/banner/109-banner-3.jpg" alt="">
                         </a>
                     </li>
-                    <li class="">
-                        <a href="#" data-reveal-id="user-input-data-modal">
-                            <img src="../images/banner/109-banner-4.jpg" alt="">
-                        </a>
-                    </li>
                 </ul>
             </div>
+
             <section id="result-suggest-school-departments-area">
                 <h2>落點分析結果 <small>(依薪資排序)</small></h2>
                 <a href="#" data-reveal-id="research-methods-modal" class="research-methods-link">分析方法</a>
@@ -448,21 +449,54 @@
             <a class="close-reveal-modal">&#215;</a>
         </div>
 
-        <!-- 使用者輸入資訊 -->
-        <div id="user-input-data-modal" class="reveal-modal small" data-reveal>
-            <h2>輸入資料！取得甄試必勝秘笈</h2>
-            <p>備審資料的眉眉角角那麼多，怎麼做才能前進理想大學？<br>
+        <!-- 發送簡訊驗證碼及驗證 -->
+        <div id="validate-modal" class="reveal-modal small" data-reveal>
+            <h3>輸入資料！取得甄試必勝秘笈</h3>
+            <p class="small">備審資料的眉眉角角那麼多，怎麼做才能前進理想大學？<br>
                 輸入下列資料，讓我們把甄戰必勝秘笈寄給你
                 還會抽出30位幸運得主，可以再獲得「大學甄選教戰手冊」暢銷書一本！</p>
+            <hr>
+            <span class="h1">Step 1 - 請驗證您的手機號碼，簡訊驗證通過方可取得抽獎資格</span>
+            <div id="validateMessage">
+            </div>
+            <form id="phone-validate">
+                <div class="row collapse">
+                    <div class="large-2 columns">
+                        <span class="prefix">手機號碼</span>
+                    </div>
+                    <div class="large-8 columns">
+                        <input id="phone" type="text" placeholder="請輸入手機號碼" value="" required>
+                    </div>
+                    <div class="large-2 columns">
+                        <input id="send-validate-code" class="button postfix" type="button" value="發送驗證碼">
+                    </div>
+                </div>
+                <div class="row collapse">
+                    <div class="large-2 columns">
+                        <span class="prefix">驗證碼</span>
+                    </div>
+                    <div class="large-8 columns">
+                        <input id="input-code" type="text" placeholder="請輸入簡訊驗證碼" required>
+                    </div>
+                    <div class="large-2 columns">
+                        <input id="validate-code" class="button postfix" type="button" value="驗證手機">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- 使用者輸入資訊 -->
+        <div id="user-input-data-modal" class="reveal-modal medium" data-reveal>
             <div id="registerMessage">
             </div>
 
             <form id="user_input">
+                <h4>Step 2 - 輸入以下資訊方可取得免費推甄必勝密笈</h4>
 
                 <div class="row">
                     <div class="large-12 columns">
-                        <label for="register-phone">電話(簡訊驗證通過方可取得免費推甄必勝密笈以及抽獎資格，請輸入正確的電話號碼)</label>
-                        <input type="text" id="register-phone" placeholder="請輸入手機號碼" required>
+                        <label for="register-phone">電話</label>
+                        <input type="text" id="register-phone" value="" required>
                     </div>
 
                     <div class="large-12 columns">
@@ -474,9 +508,11 @@
                         <label for="register-address">地址(寄送抽獎贈品用，請輸入正確的地址)</label>
                         <input type="text" id="register-address" placeholder="請輸入地址" required>
                     </div>
+                </div>
 
-                    <div class="large-12 columns">
-                        <label for="select-location">縣市</label>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="select-location">學校所在縣市</label>
                         <select id="select-location" class="form-control" required>
                             <option value="">請選擇</option>
                             <option value="基隆市">基隆市</option>
@@ -502,14 +538,15 @@
                             <option value="其他">其他</option>
                         </select>
                     </div>
-
-                    <div class="large-12 columns">
-                        <label for="select-school">學校</label>
+                    <div class="large-6 columns">
+                        <label for="select-school">學校名稱</label>
                         <select id="select-school" class="form-control" required>
                         </select>
                     </div>
+                </div>
 
-                    <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-6 columns">
                         <label for="select-identity">身分</label>
                         <select id="select-identity" class="form-control" required>
                             <option value="">請選擇</option>
@@ -518,122 +555,115 @@
                             <option value="其他">其他</option>
                         </select>
                     </div>
-
-                    <div class="large-12 columns">
-                        <label>是否有意願就讀中華大學</label>
+                    <div class="large-6 columns">
+                        <label class="prefix">是否有意願就讀中華大學</label>
                         <input type="radio" id="register-isApplyCHUTrue" name="yesno" value=1>
                         <label for="register-isApplyCHUTrue">是</label>
                         <input type="radio" id="register-isApplyCHUFalse" name="yesno" value=0>
                         <label for="register-isApplyCHUFalse">否</label>
                     </div>
-
-                    <div id="interest" class="">
-                        <div class="large-12 columns">
-                            <label for="">有興趣的科系一</label>
-                            <select id="select-interest-A" class="form-control" required>
-                                <option value="">請選擇</option>
-                                <option value="電機工程學系">電機工程學系</option>
-                                <option value="資訊工程學系">資訊工程學系</option>
-                                <option value="機械工程學系">機械工程學系</option>
-                                <option value="光電與材料工程學系">光電與材料工程學系</option>
-                                <option value="工業管理學系">工業管理學系</option>
-                                <option value="資訊管理學系">資訊管理學系</option>
-                                <option value="企業管理學系">企業管理學系</option>
-                                <option value="財務管理學系">財務管理學系</option>
-                                <option value="建築與都市計畫學系">建築與都市計畫學系</option>
-                                <option value="景觀建築學系">景觀建築學系</option>
-                                <option value="土木工程學系">土木工程學系</option>
-                                <option value="行政管理學系">行政管理學系</option>
-                                <option value="應用日語學系">應用日語學系</option>
-                                <option value="餐旅管理學系">餐旅管理學系</option>
-                                <option value="觀光與會展活動學系">觀光與會展活動學系</option>
-                                <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
-                                <option value="尚未決定">尚未決定</option>
-                            </select>
-                        </div>
-
-                        <div class="large-12 columns">
-                            <label for="">有興趣的科系二</label>
-                            <select id="select-interest-B" class="form-control">
-                                <option value="">請選擇</option>
-                                <option value="電機工程學系">電機工程學系</option>
-                                <option value="資訊工程學系">資訊工程學系</option>
-                                <option value="機械工程學系">機械工程學系</option>
-                                <option value="光電與材料工程學系">光電與材料工程學系</option>
-                                <option value="工業管理學系">工業管理學系</option>
-                                <option value="資訊管理學系">資訊管理學系</option>
-                                <option value="企業管理學系">企業管理學系</option>
-                                <option value="財務管理學系">財務管理學系</option>
-                                <option value="建築與都市計畫學系">建築與都市計畫學系</option>
-                                <option value="景觀建築學系">景觀建築學系</option>
-                                <option value="土木工程學系">土木工程學系</option>
-                                <option value="行政管理學系">行政管理學系</option>
-                                <option value="應用日語學系">應用日語學系</option>
-                                <option value="餐旅管理學系">餐旅管理學系</option>
-                                <option value="觀光與會展活動學系">觀光與會展活動學系</option>
-                                <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
-                                <option value="尚未決定">尚未決定</option>
-                            </select>
-                        </div>
-
-                        <div class="large-12 columns">
-                            <label for="">有興趣的科系三</label>
-                            <select id="select-interest-C" class="form-control">
-                                <option value="">請選擇</option>
-                                <option value="電機工程學系">電機工程學系</option>
-                                <option value="資訊工程學系">資訊工程學系</option>
-                                <option value="機械工程學系">機械工程學系</option>
-                                <option value="光電與材料工程學系">光電與材料工程學系</option>
-                                <option value="工業管理學系">工業管理學系</option>
-                                <option value="資訊管理學系">資訊管理學系</option>
-                                <option value="企業管理學系">企業管理學系</option>
-                                <option value="財務管理學系">財務管理學系</option>
-                                <option value="建築與都市計畫學系">建築與都市計畫學系</option>
-                                <option value="景觀建築學系">景觀建築學系</option>
-                                <option value="土木工程學系">土木工程學系</option>
-                                <option value="行政管理學系">行政管理學系</option>
-                                <option value="應用日語學系">應用日語學系</option>
-                                <option value="餐旅管理學系">餐旅管理學系</option>
-                                <option value="觀光與會展活動學系">觀光與會展活動學系</option>
-                                <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
-                                <option value="尚未決定">尚未決定</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <input id="send-register-btn" type="submit" class="button" value="送出">
-                    <a class="close-reveal-modal">&#215;</a>
                 </div>
-            </form>
-        </div>
 
-        <div id="validate" class="reveal-modal small" data-reveal>
-            <h2>請完成手機驗證</h2>
-            <div id="validateMessage">
-            </div>
-            <form id="phone-validate">
-                <div class="row collapse">
-                    <div class="large-2 columns">
-                        <span class="prefix">手機號碼</span>
+
+                <div id="interest" class="row hide">
+                    <div class="hide-for-small-only large-4 columns">
+                        <label for="">有興趣的科系一</label>
+                        <select id="select-interest-A" class="form-control" required>
+                            <option value="">請選擇</option>
+                            <option value="電機工程學系">電機工程學系</option>
+                            <option value="資訊工程學系">資訊工程學系</option>
+                            <option value="機械工程學系">機械工程學系</option>
+                            <option value="光電與材料工程學系">光電與材料工程學系</option>
+                            <option value="工業管理學系">工業管理學系</option>
+                            <option value="資訊管理學系">資訊管理學系</option>
+                            <option value="企業管理學系">企業管理學系</option>
+                            <option value="財務管理學系">財務管理學系</option>
+                            <option value="建築與都市計畫學系">建築與都市計畫學系</option>
+                            <option value="景觀建築學系">景觀建築學系</option>
+                            <option value="土木工程學系">土木工程學系</option>
+                            <option value="行政管理學系">行政管理學系</option>
+                            <option value="應用日語學系">應用日語學系</option>
+                            <option value="餐旅管理學系">餐旅管理學系</option>
+                            <option value="觀光與會展活動學系">觀光與會展活動學系</option>
+                            <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
+                            <option value="尚未決定">尚未決定</option>
+                        </select>
                     </div>
-                    <div class="large-8 columns">
-                        <input id="phone" type="text" placeholder="請輸入手機號碼" value="" readonly>
+
+                    <div class="show-for-small-only hide-for-large-only columns">
+                        <label for="">有興趣的科系</label>
+                        <select id="select-interest" class="form-control" required>
+                            <option value="">請選擇</option>
+                            <option value="電機工程學系">電機工程學系</option>
+                            <option value="資訊工程學系">資訊工程學系</option>
+                            <option value="機械工程學系">機械工程學系</option>
+                            <option value="光電與材料工程學系">光電與材料工程學系</option>
+                            <option value="工業管理學系">工業管理學系</option>
+                            <option value="資訊管理學系">資訊管理學系</option>
+                            <option value="企業管理學系">企業管理學系</option>
+                            <option value="財務管理學系">財務管理學系</option>
+                            <option value="建築與都市計畫學系">建築與都市計畫學系</option>
+                            <option value="景觀建築學系">景觀建築學系</option>
+                            <option value="土木工程學系">土木工程學系</option>
+                            <option value="行政管理學系">行政管理學系</option>
+                            <option value="應用日語學系">應用日語學系</option>
+                            <option value="餐旅管理學系">餐旅管理學系</option>
+                            <option value="觀光與會展活動學系">觀光與會展活動學系</option>
+                            <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
+                            <option value="尚未決定">尚未決定</option>
+                        </select>
                     </div>
-                    <div class="large-2 columns">
-                        <input id="send-validate-code" class="button postfix" type="button" value="發送驗證碼">
+
+                    <div class="hide-for-small-only large-4 columns">
+                        <label for="">有興趣的科系二</label>
+                        <select id="select-interest-B" class="form-control">
+                            <option value="">請選擇</option>
+                            <option value="電機工程學系">電機工程學系</option>
+                            <option value="資訊工程學系">資訊工程學系</option>
+                            <option value="機械工程學系">機械工程學系</option>
+                            <option value="光電與材料工程學系">光電與材料工程學系</option>
+                            <option value="工業管理學系">工業管理學系</option>
+                            <option value="資訊管理學系">資訊管理學系</option>
+                            <option value="企業管理學系">企業管理學系</option>
+                            <option value="財務管理學系">財務管理學系</option>
+                            <option value="建築與都市計畫學系">建築與都市計畫學系</option>
+                            <option value="景觀建築學系">景觀建築學系</option>
+                            <option value="土木工程學系">土木工程學系</option>
+                            <option value="行政管理學系">行政管理學系</option>
+                            <option value="應用日語學系">應用日語學系</option>
+                            <option value="餐旅管理學系">餐旅管理學系</option>
+                            <option value="觀光與會展活動學系">觀光與會展活動學系</option>
+                            <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
+                            <option value="尚未決定">尚未決定</option>
+                        </select>
                     </div>
-                </div>
-                <div class="row collapse">
-                    <div class="large-2 columns">
-                        <span class="prefix">驗證碼</span>
-                    </div>
-                    <div class="large-8 columns">
-                        <input id="input-code" type="text" placeholder="請輸入簡訊驗證碼" required>
-                    </div>
-                    <div class="large-2 columns">
-                        <input id="validate-code" class="button postfix" type="button" value="驗證手機">
+
+                    <div class="hide-for-small-only large-4 columns">
+                        <label for="">有興趣的科系三</label>
+                        <select id="select-interest-C" class="form-control">
+                            <option value="">請選擇</option>
+                            <option value="電機工程學系">電機工程學系</option>
+                            <option value="資訊工程學系">資訊工程學系</option>
+                            <option value="機械工程學系">機械工程學系</option>
+                            <option value="光電與材料工程學系">光電與材料工程學系</option>
+                            <option value="工業管理學系">工業管理學系</option>
+                            <option value="資訊管理學系">資訊管理學系</option>
+                            <option value="企業管理學系">企業管理學系</option>
+                            <option value="財務管理學系">財務管理學系</option>
+                            <option value="建築與都市計畫學系">建築與都市計畫學系</option>
+                            <option value="景觀建築學系">景觀建築學系</option>
+                            <option value="土木工程學系">土木工程學系</option>
+                            <option value="行政管理學系">行政管理學系</option>
+                            <option value="應用日語學系">應用日語學系</option>
+                            <option value="餐旅管理學系">餐旅管理學系</option>
+                            <option value="觀光與會展活動學系">觀光與會展活動學系</option>
+                            <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
+                            <option value="尚未決定">尚未決定</option>
+                        </select>
                     </div>
                 </div>
+
+                <input id="send-register-btn" type="submit" class="button round" value="送出">
             </form>
         </div>
 
