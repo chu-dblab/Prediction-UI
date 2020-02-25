@@ -218,7 +218,7 @@
                                 <li><label><input type="checkbox" name="input-state-group"
                                             value="苗栗縣"><span>苗栗縣</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
-                                            value="臺中市"><span>臺中市</span></label></li>
+                                            value="台中市"><span>台中市</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
                                             value="彰化縣"><span>彰化縣</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
@@ -226,7 +226,7 @@
                                 <li><label><input type="checkbox" name="input-state-group"
                                             value="嘉義縣市"><span>嘉義縣市</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
-                                            value="臺南市"><span>臺南市</span></label></li>
+                                            value="台南市"><span>台南市</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
                                             value="高雄市"><span>高雄市</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
@@ -236,7 +236,7 @@
                                 <li><label><input type="checkbox" name="input-state-group"
                                             value="花蓮縣"><span>花蓮縣</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
-                                            value="臺東縣"><span>臺東縣</span></label></li>
+                                            value="台東縣"><span>台東縣</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
                                             value="金門縣"><span>金門縣</span></label></li>
                             </ul>
@@ -397,7 +397,7 @@
                                 <li>如某校系沒有薪資資料，則將該校系的平均薪資視為0</li>
                                 <li>薪資資料更新時間: 2020/02/21</li>
                             </ul>
-                            <li>學測分數: <a href="https://www.caac.ccu.edu.tw/cacportal/index.php"
+                            <li>學測分數: <a href="https://www.cac.edu.tw/cacportal/index.php"
                                     target="_blank">大學甄選委員會網頁</a></li>
                             <li>科系資料</li>
                             <ul>
@@ -457,8 +457,6 @@
                 還會抽出30位幸運得主，可以再獲得「大學甄選教戰手冊」暢銷書一本！</p>
             <hr>
             <span class="h1">Step 1 - 請驗證您的手機號碼，簡訊驗證通過方可取得抽獎資格</span>
-            <div id="validateMessage">
-            </div>
             <form id="phone-validate">
                 <div class="row collapse">
                     <div class="large-2 columns">
@@ -482,19 +480,20 @@
                         <input id="validate-code" class="button postfix" type="button" value="驗證手機">
                     </div>
                 </div>
+                <div id="validateMessage">
+                </div>
+                <a class="close-reveal-modal">&#215;</a>
             </form>
         </div>
 
         <!-- 使用者輸入資訊 -->
         <div id="user-input-data-modal" class="reveal-modal small" data-reveal>
-            <div id="registerMessage">
-            </div>
-            <form id="user_input">
-            <span class="h1">Step 2 - 請</span>
+        <form id="user_input">
+            <span class="h1">Step 2 - 請輸入以下資訊，填完之後方可取得免費甄試必勝秘笈</span>
                 <div class="row">
                     <div class="small-12 large-12 columns">
                         <label for="register-phone">電話</label>
-                        <input type="text" id="register-phone" required>
+                        <input type="text" id="register-phone" readonly>
                     </div>
 
                     <div class="small-12 large-12 columns">
@@ -569,7 +568,7 @@
                     </div>
                 </div>
                 <div id="interest" class="row hide">
-                    <div class="hide-for-small-only small-12 large-4 columns">
+                    <div class="small-12 large-4 columns">
                         <label for="">有興趣的科系一</label>
                         <select id="select-interest-A" class="form-control" required>
                             <option value="">請選擇</option>
@@ -592,30 +591,7 @@
                             <option value="尚未決定">尚未決定</option>
                         </select>
                     </div>
-                    <div class="show-for-small-only small-12 hide-for-large-only columns">
-                        <label for="">有興趣的科系</label>
-                        <select id="select-interest" class="form-control" required>
-                            <option value="">請選擇</option>
-                            <option value="電機工程學系">電機工程學系</option>
-                            <option value="資訊工程學系">資訊工程學系</option>
-                            <option value="機械工程學系">機械工程學系</option>
-                            <option value="光電與材料工程學系">光電與材料工程學系</option>
-                            <option value="工業管理學系">工業管理學系</option>
-                            <option value="資訊管理學系">資訊管理學系</option>
-                            <option value="企業管理學系">企業管理學系</option>
-                            <option value="財務管理學系">財務管理學系</option>
-                            <option value="建築與都市計畫學系">建築與都市計畫學系</option>
-                            <option value="景觀建築學系">景觀建築學系</option>
-                            <option value="土木工程學系">土木工程學系</option>
-                            <option value="行政管理學系">行政管理學系</option>
-                            <option value="應用日語學系">應用日語學系</option>
-                            <option value="餐旅管理學系">餐旅管理學系</option>
-                            <option value="觀光與會展活動學系">觀光與會展活動學系</option>
-                            <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
-                            <option value="尚未決定">尚未決定</option>
-                        </select>
-                    </div>
-                    <div class="hide-for-small-only small-12 large-4 columns">
+                    <div class="small-12 large-4 columns">
                         <label for="">有興趣的科系二</label>
                         <select id="select-interest-B" class="form-control">
                             <option value="">請選擇</option>
@@ -639,7 +615,7 @@
                         </select>
                     </div>
 
-                    <div class="hide-for-small-only small-12 large-4 columns">
+                    <div class="small-12 large-4 columns">
                         <label for="">有興趣的科系三</label>
                         <select id="select-interest-C" class="form-control">
                             <option value="">請選擇</option>
@@ -664,6 +640,8 @@
                     </div>
                 </div>
                 <input id="send-register-btn" type="submit" class="button round" value="送出">
+                <div id="registerMessage">
+                </div>
             </form>
         </div>
 

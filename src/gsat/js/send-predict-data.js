@@ -169,12 +169,12 @@ function addData(did, uname, uurl, dname, durl, salary, salaryUrl, lastCriterion
     }
 
     var rateOfThisYear_tooltip, rateOfThisYear_info_icon, rateOfThisYear_change_class;
-    if (change !== null || change !== "") {
+    if (change !== null && change !== "") {
         rateOfThisYear_tooltip = ' data-tooltip aria-haspopup="true" data-tooltip-title="' + change + '"';
 
         rateOfThisYear_change_class = ' change';
     } else {
-        rateOfThisYear_tooltip = 'iii';
+        rateOfThisYear_tooltip = '';
 
         rateOfThisYear_change_class = '';
     }
@@ -261,16 +261,16 @@ function queryResult() {
                 beforeSend: function () {
                     // 顯示處理中畫面
                     div_loading.classList.remove('hidden');
-                    $('input[type=submit]').prop("disabled", true);
-                    $('input[type=submit]').val('落點分析中...');
+                    $('#input-form>input[type=submit]').prop("disabled", true);
+                    $('#input-form>input[type=submit]').val('落點分析中...');
                     querying = true;
                 },
                 success: function (data) {
                     // 隱藏處理中畫面
                     div_loading.classList.add('hidden');
                     setData(inputData, data.result);
-                    $('input[type=submit]').prop("disabled", false);
-                    $('input[type=submit]').val('開始分析');
+                    $('#input-form>input[type=submit]').prop("disabled", false);
+                    $('#input-form>input[type=submit]').val('開始分析');
                     querying = false;
                 },
                 error: function (data) {
@@ -279,7 +279,7 @@ function queryResult() {
                     errorData();
                     errorAlertMsg("<strong>錯誤！</strong> 沒有網路連線");
                     $('input[type=submit]').prop("disabled", false);
-                    $('input[type=submit]').val('開始分析');
+                    $('#input-form>input[type=submit]').val('開始分析');
                     querying = false;
                 }
             });

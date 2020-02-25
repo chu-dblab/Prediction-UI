@@ -7,7 +7,9 @@ $('input[type="radio"]').click(function () {
     if ($(this).attr("value") == 1) {
         $("#interest").removeClass('hide');
     }
-
+    if($(this).attr("value") == 2){
+        $("#interest").addClass('hide');
+    }
 });
 
 function checkGrade(data) {
@@ -45,38 +47,46 @@ function getRegisterData() {
     if(input_email == "")
     {
         errorDialogAlertMsg('registerMessage', "請輸入您的電子郵件地址");
+        autoscroll('registerMessage');
     }
     else if(input_phone == "")
     {
         errorDialogAlertMsg('registerMessage', "請輸入您的手機號碼");
+        autoscroll('registerMessage');
     }
     else if(input_name == ""){
         errorDialogAlertMsg('registerMessage', "請輸入您的姓名");
+        autoscroll('registerMessage');
     }
     else if(input_address == "")
     {
         errorDialogAlertMsg('registerMessage', "請輸入您的地址");
+        autoscroll('registerMessage');
     }
     else if(select_location == "")
     {
         errorDialogAlertMsg('registerMessage', "請務必選擇您高中學校所在縣市");
+        autoscroll('registerMessage');
     }
     else if(select_school == "")
     {
         errorDialogAlertMsg('registerMessage', "請務必選擇您高中學校校名");
+        autoscroll('registerMessage');
     }
     else if(select_identity == "")
     {
         errorDialogAlertMsg('registerMessage', "請務必選擇您的身份");
+        autoscroll('registerMessage');
     }
     else if(input_isApplyCHU == null)
     {
         errorDialogAlertMsg('registerMessage', "請務必回答您是否有意願就讀中華大學");
+        autoscroll('registerMessage');
     }
-    else if((document.getElementById('select-interest-A').value == "" && input_isApplyCHU == 1) &&
-    document.getElementById('select-interest').value == "" && input_isApplyCHU == 1)
+    else if(document.getElementById('select-interest-A').value == "" && input_isApplyCHU == 1)
     {
         errorDialogAlertMsg('registerMessage', "請輸入您有興趣的科系");
+        autoscroll('registerMessage');
     }
     else{
 
@@ -759,6 +769,7 @@ $('#select-location').change(function (e) {
     }
 });
 
+//輸入個人資訊
 $('#send-register-btn').click(function (e) {
 
     var inputRegisterData = getRegisterData();
@@ -770,8 +781,8 @@ $('#send-register-btn').click(function (e) {
     else {
         e.preventDefault();
         $.ajax({
-            type: "POST",
             url: baseRegisterSystemSingUpUrl,
+            type: "POST",
             headers: {
                 "content-type": "application/json"
             },
@@ -779,42 +790,49 @@ $('#send-register-btn').click(function (e) {
             data: JSON.stringify(inputRegisterData),
             beforeSend: function () {
                 // 顯示處理中畫面
-                $('input[type=submit]').prop("disabled", true);
-                $('#user_input').addClass("hide");
+                $('#user_input>input[type=submit]').prop("disabled", true);
                 infoDialogAlertMsg('registerMessage', "請稍後，資料傳送中...");
             },
             success: function (data) {
                 // 隱藏處理中畫面
                 if (data.status == 201) {
-                    $('input[type=submit]').prop("disabled", false);
+                    $('#user_input>input[type=submit]').prop("disabled", false);
                     $('#registerMessage').empty();
-                    errorDialogAlertMsg('registerMessage', "<strong>註冊失敗！</strong> " + data.message);
-                } else {
-                    $('input[type=submit]').prop("disabled", false);
+                    errorDialogAlertMsg('registerMessage', "<strong>輸入資料失敗！</strong> " + data.message);
+                } else if (data.status == 200) {
+                    $('#user_input>input[type=submit]').prop("disabled", false);
                     $('#registerMessage').empty();
                     successDialogAlertMsg('registerMessage', "<strong>輸入完成！</strong> " + data.message);
-                    $('user-input-data-modal').fadeOut('slow');
-                    infoModal();
+                    //infoModal();
                 }
             },
-            error: function (data) {
+            error: function (xhr) {
+                var data = xhr.responseJSON;
                 // 隱藏處理中畫面
-                if (data.status == 400) {
-                    errorDialogAlertMsg('registerMessage', "<strong>註冊失敗！</strong> " + data.message);
-                    $('input[type=submit]').prop("disabled", false);
+                if (xhr.status == 409) {
+                    errorDialogAlertMsg('registerMessage', "<strong>輸入資料失敗！</strong> " + data.message);
+                    $('#user_input>input[type=submit]').prop("disabled", false);
                 } else {
                     errorDialogAlertMsg('registerMessage', "<strong>錯誤！</strong> 沒有網路連線");
-                    $('input[type=submit]').prop("disabled", false);
+                    $('#user_input>input[type=submit]').prop("disabled", false);
                 }
             }
         });
     }
 });
 
+// var user_input_form = document.getElementById('user_input');
+// user_input_form.onsubmit = function (e) {
+//     e.preventDefault();
+//     sendUserInfo();
+//     return 0;
+// }
+
+//寄發簡訊驗證
 $('#send-validate-code').click(function (e) {
     var phone = $('#phone').val();
     if (phone === "") {
-        //do nothing
+        errorDialogAlertMsg('validateMessage',請輸入電話號碼);
     }
     else if(phone == "0912345678") {
         $('#validateMessage').empty();
@@ -836,61 +854,105 @@ $('#send-validate-code').click(function (e) {
             success: function (resp){
                 if(resp.status == 200)
                 {
+                    $('#validateMessage').empty();
                     successDialogAlertMsg('validateMessage',resp.message);
                 }
             },
             error: function (xhr){
-                var data = JSON.parse(xhr.responseText);
+                var data = xhr.responseJSON;
                 if(xhr.status == 400)
                 {
+                    $('#validateMessage').empty();
+                    errorDialogAlertMsg('validateMessage',data.message);
+                }
+                else if(xhr.status == 409)
+                {
+                    $('#validateMessage').empty();
                     errorDialogAlertMsg('validateMessage',data.message);
                 }
                 else if(xhr.status == 500)
                 {
+                    $('#validateMessage').empty();
                     errorDialogAlertMsg('validateMessage',"內部錯誤");
+                }
+                else
+                {
+                    $('#validateMessage').empty();
+                    errorDialogAlertMsg('validateMessage',"其他未知錯誤");
                 }
             }
        });
     }
 });
 
+//驗證簡訊驗證碼
 $('#validate-code').click(function (e) {
-    e.preventDefault();
+
     var code = $('#input-code').val();
     var phone = $('#phone').val();
     var inputdata = {
         "phone": phone,
         "code": code
     };
-
-
     if (code === "") {}if(phone == "0912345678" && code=="123456"){
-        $('#registerMessage').empty();
+        $('#validateMessage').empty();
         successDialogAlertMsg('validateMessage', "<strong>驗證成功！</strong>");
         $('#validate').fadeOut('slow');
         phoneVlidate(inputdata);
     } else {
+        e.preventDefault();
         $.ajax({
-            type: "POST",
             url: "api/gsat/validate",
+            type: "POST",
             headers: {
-                "content-type": "application/x-www-form-urlencoded"
+                "content-type": "application/json"
             },
-            data: inputdata,
-            dataType: "text",
+            data: JSON.stringify(inputdata),
+            dataType: "json",
             beforeSend: function () {
                 infoDialogAlertMsg('validateMessage', "請稍後，資料傳送中...");
             },
-            success: function (data) {
-                $('#validateMessage').empty();
-                successDialogAlertMsg('validateMessage', "<strong>驗證成功！</strong>");
-                $('#validate').fadeOut('slow');
-                phoneVlidate(inputdata);
+            success: function (resp) {
+                if(resp.status == 200)
+                {
+                    $('#validateMessage').empty();
+                    successDialogAlertMsg('validateMessage', "<strong>驗證成功！</strong>");
+                    $('#validate').fadeOut('slow');
+                    phoneVlidate(inputdata);
+                }
+                else if(resp.status == 201)
+                {
+                    $('#validateMessage').empty();
+                    infoDialogAlertMsg('validateMessage',resp.message);
+                }
             },
-            error: function (data) {
-                $('#validateMessage').empty();
-                errorDialogAlertMsg('validateMessage', "<strong>錯誤！</strong> 沒有網路連線");
-                $('#validate').foundation('reveal', 'close');
+            error: function (xhr) {
+                var str = xhr.responseJSON
+                if(xhr.status == 404) //沒有這個門號
+                {
+                    $('#validateMessage').empty();
+                    errorDialogAlertMsg('validateMessage', str.message);
+                }
+                else if(xhr.status == 400)
+                {
+                    $('#validateMessage').empty();
+                    errorDialogAlertMsg('validateMessage', str.message);
+                }
+                else if(xhr.status == 401) //手機已被驗證過
+                {
+                    $('#validateMessage').empty();
+                    errorDialogAlertMsg('validateMessage', str.message);
+                }
+                else if(xhr.status == 409)
+                {
+                    $('#validateMessage').empty();
+                    errorDialogAlertMsg('validateMessage', str.message);
+                }
+                else
+                {
+                    $('#validateMessage').empty();
+                    errorDialogAlertMsg('validateMessage', "內部錯誤");
+                }
             }
         });
     }
