@@ -89,13 +89,14 @@ module.exports = function(grunt) {
         proxies: [
           {
               context: ['/gsat/api', '/ast/api'],
+              //host: 'predict.chu.edu.tw',
               host: '140.126.120.79',
               port: 80,
               https: false,
               changeOrigin: true,
               rewrite: {
                   '^/gsat/api': '2020/gsat/api',
-                  //'^/ast/api': 'dev/ast/api',
+                  '^/ast/api': 'dev/ast/api',
               }
           }
         ]

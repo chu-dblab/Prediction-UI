@@ -14,17 +14,6 @@ function getData() {
     // 網頁介面對應
     var input_salary = document.getElementById('input-expect-salary');
 
-    // var input_ast_chinese   = document.getElementById('input-ast-chinese');
-    // var input_ast_english   = document.getElementById('input-ast-english');
-    // var input_ast_mathA     = document.getElementById('input-ast-math-a');
-    // var input_ast_mathB     = document.getElementById('input-ast-math-b');
-    // var input_ast_history   = document.getElementById('input-ast-history');
-    // var input_ast_geography = document.getElementById('input-ast-geography');
-    // var input_ast_citizen   = document.getElementById('input-ast-citizen-and-social');
-    // var input_ast_physics   = document.getElementById('input-ast-physics');
-    // var input_ast_chemistry = document.getElementById('input-ast-chemistry');
-    // var input_ast_organism  = document.getElementById('input-ast-organism');
-
     var input_gsat_chinese = document.getElementById('input-gsat-chinese');
     var input_gsat_english = document.getElementById('input-gsat-english');
     var input_gsat_math = document.getElementById('input-gsat-math');
@@ -42,16 +31,6 @@ function getData() {
     } else {
         var salary = parseFloat(input_salary.value);
     }
-    // var ast_chinese = parseInt(input_ast_chinese.value);
-    // var ast_english = parseInt(input_ast_english.value);
-    // var ast_mathA = parseInt(input_ast_mathA.value)
-    // var ast_mathB = parseInt(input_ast_mathB.value);
-    // var ast_history = parseInt(input_ast_history.value);
-    // var ast_geography = parseInt(input_ast_geography.value);
-    // var ast_citizen = parseInt(input_ast_citizen.value);
-    // var ast_physics = parseInt(input_ast_physics.value);
-    // var ast_chemistry = parseInt(input_ast_chemistry.value);
-    // var ast_organism = parseInt(input_ast_organism.value);
 
     if (input_gsat_chinese.value == "") {
         var gsat_chinese = parseInt(0);
@@ -119,20 +98,6 @@ function getData() {
         }
     }
 
-    // 製作JSON
-    /*"ast": {
-      "Chinese": ast_chinese,
-      "English": ast_english,
-      "Math_A": ast_mathA,
-      "Math_B": ast_mathB,
-      "History": ast_history,
-      "Geographic":ast_geography,
-      "Citizen_and_Society": ast_citizen,
-      "Physics": ast_physics,
-      "Chemistry": ast_chemistry,
-      "Biology": ast_organism
-    },
-    */
     var data = {
 
         "grades": {
@@ -206,11 +171,11 @@ function addData(did, uname, uurl, dname, durl, salary, salaryUrl, lastCriterion
     var rateOfThisYear_tooltip, rateOfThisYear_info_icon, rateOfThisYear_change_class;
     if (change !== null || change !== "") {
         rateOfThisYear_tooltip = ' data-tooltip aria-haspopup="true" data-tooltip-title="' + change + '"';
-        // rateOfThisYear_info_icon = '<i class="fi-info"></i>';
+
         rateOfThisYear_change_class = ' change';
     } else {
         rateOfThisYear_tooltip = 'iii';
-        // rateOfThisYear_info_icon = '';
+
         rateOfThisYear_change_class = '';
     }
     content += '<td data-title="今年篩選倍率" class="' + rateOfThisYear_change_class + '"><span' + rateOfThisYear_tooltip + '>' + rateOfThisYear + '</span></td>';
@@ -234,7 +199,6 @@ function cleanData() {
     table_result_body.empty();
     table_result_body.append('<tr><td class="big-row" colspan="˙">沒有符合您的校系，請修改條件後再次分析。</td></tr>');
 }
-
 
 function errorData() {
     // 網頁介面對應

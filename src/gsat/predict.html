@@ -208,7 +208,7 @@
                                 <li><label><input type="checkbox" name="input-state-group"
                                             value="基隆市"><span>基隆市</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
-                                            value="臺北市"><span>臺北市</span></label></li>
+                                            value="台北市"><span>台北市</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
                                             value="新北市"><span>新北市</span></label></li>
                                 <li><label><input type="checkbox" name="input-state-group"
@@ -395,7 +395,7 @@
                             </li>
                             <ul>
                                 <li>如某校系沒有薪資資料，則將該校系的平均薪資視為0</li>
-                                <li>薪資資料更新時間: 2019/02/18</li>
+                                <li>薪資資料更新時間: 2020/02/21</li>
                             </ul>
                             <li>學測分數: <a href="https://www.caac.ccu.edu.tw/cacportal/index.php"
                                     target="_blank">大學甄選委員會網頁</a></li>
@@ -465,7 +465,7 @@
                         <span class="prefix">手機號碼</span>
                     </div>
                     <div class="large-8 columns">
-                        <input id="phone" type="text" placeholder="請輸入手機號碼" value="" required>
+                        <input id="phone" type="text" pattern=’09\d{2}\d{6}’ placeholder="請輸入手機號碼" value="" required>
                     </div>
                     <div class="large-2 columns">
                         <input id="send-validate-code" class="button postfix" type="button" value="發送驗證碼">
@@ -486,32 +486,35 @@
         </div>
 
         <!-- 使用者輸入資訊 -->
-        <div id="user-input-data-modal" class="reveal-modal medium" data-reveal>
+        <div id="user-input-data-modal" class="reveal-modal small" data-reveal>
             <div id="registerMessage">
             </div>
-
             <form id="user_input">
-                <h4>Step 2 - 輸入以下資訊方可取得免費推甄必勝密笈</h4>
-
+            <span class="h1">Step 2 - 請</span>
                 <div class="row">
-                    <div class="large-12 columns">
+                    <div class="small-12 large-12 columns">
                         <label for="register-phone">電話</label>
-                        <input type="text" id="register-phone" value="" required>
+                        <input type="text" id="register-phone" required>
                     </div>
 
-                    <div class="large-12 columns">
+                    <div class="small-12 large-12 columns">
                         <label for="register-email">電子郵件信箱(推甄必勝密笈將以電子郵件傳送，請輸入正確的電子郵件信箱)</label>
                         <input type="email" id="register-email" placeholder="請輸入電子郵件" required>
                     </div>
 
-                    <div class="large-12 columns">
+                    <div class="small-12 large-12 columns">
+                        <label for="register-address">姓名(寄送抽獎贈品用，請輸入正確的資料)</label>
+                        <input type="text" id="register-name" placeholder="請輸入姓名" required>
+                    </div>
+
+                    <div class="small-12 large-12 columns">
                         <label for="register-address">地址(寄送抽獎贈品用，請輸入正確的地址)</label>
                         <input type="text" id="register-address" placeholder="請輸入地址" required>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="large-6 columns">
+                    <div class="small-12 large-6 columns">
                         <label for="select-location">學校所在縣市</label>
                         <select id="select-location" class="form-control" required>
                             <option value="">請選擇</option>
@@ -538,7 +541,7 @@
                             <option value="其他">其他</option>
                         </select>
                     </div>
-                    <div class="large-6 columns">
+                    <div class="small-12 large-6 columns">
                         <label for="select-school">學校名稱</label>
                         <select id="select-school" class="form-control" required>
                         </select>
@@ -546,7 +549,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="large-6 columns">
+                    <div class="small-12 large-6 columns">
                         <label for="select-identity">身分</label>
                         <select id="select-identity" class="form-control" required>
                             <option value="">請選擇</option>
@@ -555,18 +558,18 @@
                             <option value="其他">其他</option>
                         </select>
                     </div>
-                    <div class="large-6 columns">
-                        <label class="prefix">是否有意願就讀中華大學</label>
-                        <input type="radio" id="register-isApplyCHUTrue" name="yesno" value=1>
+                    <div class="small-12 large-6 columns">
+                        <label>是否有意願就讀中華大學</label>
+                        <input type="radio" id="register-isApplyCHUTrue" name="yesno" value=1 required>
                         <label for="register-isApplyCHUTrue">是</label>
-                        <input type="radio" id="register-isApplyCHUFalse" name="yesno" value=0>
+                        <input type="radio" id="register-isApplyCHUFalse" name="yesno" value=0 required>
                         <label for="register-isApplyCHUFalse">否</label>
+                        <input type="radio" id="register-isApplyCHUUnknown" name="yesno" value=2 required>
+                        <label for="register-isApplyCHUUnknown">尚未決定</label>
                     </div>
                 </div>
-
-
                 <div id="interest" class="row hide">
-                    <div class="hide-for-small-only large-4 columns">
+                    <div class="hide-for-small-only small-12 large-4 columns">
                         <label for="">有興趣的科系一</label>
                         <select id="select-interest-A" class="form-control" required>
                             <option value="">請選擇</option>
@@ -589,8 +592,7 @@
                             <option value="尚未決定">尚未決定</option>
                         </select>
                     </div>
-
-                    <div class="show-for-small-only hide-for-large-only columns">
+                    <div class="show-for-small-only small-12 hide-for-large-only columns">
                         <label for="">有興趣的科系</label>
                         <select id="select-interest" class="form-control" required>
                             <option value="">請選擇</option>
@@ -613,8 +615,7 @@
                             <option value="尚未決定">尚未決定</option>
                         </select>
                     </div>
-
-                    <div class="hide-for-small-only large-4 columns">
+                    <div class="hide-for-small-only small-12 large-4 columns">
                         <label for="">有興趣的科系二</label>
                         <select id="select-interest-B" class="form-control">
                             <option value="">請選擇</option>
@@ -638,7 +639,7 @@
                         </select>
                     </div>
 
-                    <div class="hide-for-small-only large-4 columns">
+                    <div class="hide-for-small-only small-12 large-4 columns">
                         <label for="">有興趣的科系三</label>
                         <select id="select-interest-C" class="form-control">
                             <option value="">請選擇</option>
@@ -662,9 +663,31 @@
                         </select>
                     </div>
                 </div>
-
                 <input id="send-register-btn" type="submit" class="button round" value="送出">
             </form>
+        </div>
+
+        <!-- 信件內容 -->
+        <div id="info-modal" class="reveal-modal" data-reveal>
+            <p>各位同學：</p>
+            <p>
+              隨著大學學測成績公告，此刻的你（妳）一定在看著落點分析結果發愁，正在憂慮著自己該如何下手準備備審資料。<br>
+
+              中華大學特別與甄戰名師俞征武教授合作拍攝影片，特別節錄出大家製作備審資料時，最關注的三個重點，歡迎同學一起為自己加值：<br><br>
+              <a href="https://youtu.be/uhX3C9B7GKg">【秘笈1：備審資料常見Q&A】</a><br><br>
+              <a href="https://youtu.be/n2o62_DNmIQ">【秘笈2：備審資料怎麼做才能100分】</a><br><br>
+              <a href="https://youtu.be/wydkwEayiow">【秘笈3：備審資料不能犯的NG狀況】</a><br>
+            </p>
+            <br>
+            <p>另外，我們為了要讓各位同學掌握全方位的甄試必勝秘訣，即日起至3月2日（星期一）18時止，凡登錄索取者，我們將於3/2（星期一）晚間19時抽出30位幸運得主，可以再獲得「大學甄選教戰手冊」暢銷書一本。</p>
+            <br>
+            <a class="mx-auto" href="https://imgur.com/hySgbJ2"><img src="https://i.imgur.com/hySgbJ2.png"
+                title="source: imgur.com" /></a>
+            <p>如果有任何問題，歡迎搜尋LINE ID【@chu1990】或點選網址（https://lin.ee/jg0XKan）加入好友，小編線上隨時給你諮詢服務，讓你贏在起跑點！</p>
+            <p>謹祝各位同學　金榜題名、甄戰必勝</p>
+
+            <p>中華大學敬上</p>
+            <a class="close-reveal-modal">&#215;</a>
         </div>
 
         <!-- ref:include footer -->
@@ -688,7 +711,7 @@
                 zIndex: 5,
                 useAbsolutePositioning: true
             });
-            alert("2020年學測落點分析還未正式上線，目前僅供試用。");
+            // alert("2020年學測落點分析還未正式上線，目前僅供試用。");
         };
 
         $(document).foundation({
@@ -696,7 +719,7 @@
                 animation: 'slide',
                 timer_speed: 3000,
                 animation_speed: 500,
-                pause_on_hover: true,
+                pause_on_hover: false,
                 navigation_arrows: false,
                 bullets: false,
                 slide_number: false,
