@@ -2,6 +2,7 @@ var chart_data;
 var debug_data;
 var chart_height = 500;
 var chart_rotate = false;
+var filename = "docs/109-CP-public.json";
 // if(document.documentElement.clientWidth <= 640) {
 if(screen.width <= 640) {
   chart_rotate = true;
@@ -151,8 +152,7 @@ function renderTheChart(element_name, data) {
     }
   });
 }
-
-d3.json("docs/108-CP-public.json").then(function(data) {
+d3.json(filename).then(function(data) {
   chart_data = data;
   // 切換顯示動作
   var parm = getUrlParmC();
