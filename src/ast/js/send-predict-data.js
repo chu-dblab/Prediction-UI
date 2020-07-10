@@ -1,4 +1,4 @@
-var basePredictSystemUrl = "api/Ast/analysis";
+var basePredictSystemUrl = "api/ast/analysis";
 var basePredictHistorySystemUrl = "api/Store/History";
 var max_input_score = 15;
 var querying = false;
