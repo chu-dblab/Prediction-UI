@@ -13,6 +13,12 @@ var querying = false;
 //     return r;
 // }
 
+function transferToMobileSalaryURL(url) {
+    let params = url.split('?');
+    // https://guide.104.com.tw/career/view?degree=3&mid=520114&sid=5007000000
+    let murl = "https://guide.104.com.tw/career/view?"+params[1];
+    return murl;
+}
 
 function getGsatTotalScore() {
   var input_gsat_chinese  = document.getElementById('input-gsat-chinese');
@@ -258,7 +264,10 @@ function addData(did, uname, uurl, dname, durl, salary, salaryUrl, minScore, you
     content += '<td data-title="畢業生平均薪資">'+salary+'</td>';
   }
   else {
-    content += '<td data-title="畢業生平均薪資"><a href="'+salaryUrl+'" target="_blank" data-tooltip aria-haspopup="true" data-tooltip-title="連結至104升學就業地圖">'+salary+'</a></td>';
+      if(window.screen.height < 768) {
+          salaryUrl = transferToMobileSalaryURL(salaryUrl);
+      }
+      content += '<td data-title="畢業生平均薪資"><a href="'+salaryUrl+'" target="_blank" data-tooltip aria-haspopup="true" data-tooltip-title="連結至104升學就業地圖">'+salary+'</a></td>';
   }
   content += '<td data-title="去年最低錄取分數">'+minScore+'</td>';
   if(yourScore < minScore) {
