@@ -259,7 +259,12 @@ function addData(did, uname, uurl, dname, durl, salary, salaryUrl, minScore, you
     content += '<th data-title="校系代碼"><a href="'+examURL+'" target="_blank" data-tooltip aria-haspopup="true" data-tooltip-title="連結至指考校系分則網頁">'+did+'</a></th>';
   }
   content += '<td data-title="校名"><a href="'+uurl+'" target="_blank" data-tooltip aria-haspopup="true" data-tooltip-title="連結至學校首頁">'+uname+'</a></td>';
-  content += '<td data-title="科系名稱"><a href="'+durl+'" target="_blank" data-tooltip aria-haspopup="true" data-tooltip-title="連結至科系首頁">'+dname+'</a></td>';
+  if(durl === null){
+    content += '<td data-title="科系名稱">'+dname+'</td>';
+  }
+  else {
+    content += '<td data-title="科系名稱"><a href="'+durl+'" target="_blank" data-tooltip aria-haspopup="true" data-tooltip-title="連結至科系首頁">'+dname+'</a></td>';
+  }
   if(salaryUrl === null) {
     content += '<td data-title="畢業生平均薪資">'+salary+'</td>';
   }
