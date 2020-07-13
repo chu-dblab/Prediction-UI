@@ -318,49 +318,22 @@
         薪資資料來源: <a href="http://www.104.com.tw/jb/career/department/" target="_blank">104升學就業地圖 - 系友薪資行情</a>
       </div>
 
-      <div class="banner">
-        <!-- <a href="http://www1.chu.edu.tw/p/412-1000-509.php?Lang=zh-tw" target="_blank"> -->
-        <a href="http://www1.chu.edu.tw/p/412-1000-82.php?Lang=zh-tw" target="_blank">
-          <img src="../images/banner/CHU.gif">
-        </a>
-      </div>
-
-      <!-- <h3>中華大學落點排序</h3>
-      <p id="chu-welfare" class="">
-        <a href="http://www.underadmissions.chu.edu.tw/p/412-1018-100.php?Lang=zh-tw#001" target="_blank">以第一志願就讀可領獎學金最高新臺幣8萬元！</a>
-      </p>
-      <table id="table-chu-result-suggest-school-departments">
-        <thead>
-          <tr>
-            <th>校系代碼</th>
-            <th>校名</th>
-            <th>科系名稱</th>
-            <th>畢業生平均薪資</th>
-            <th>去年最低錄取分數</th>
-            <th>換算去年加權分數</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="big-row" colspan="6">請輸入條件來進行落點分析</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td class="big-row" colspan="6"  id="chu-welfare-salary">
-               <span>分析結果僅供參考，請自行判斷是否採納本站建議，本站不負考生錄取與否之連帶責任。</span>
-            </td>
-          </tr>
-        </tfoot>
-      </table> -->
-
-      <!-- <div class="banner">
-        <a href="http://www1.chu.edu.tw/p/412-1000-510.php?Lang=zh-tw" target="_blank">
-          <img src="../images/banner/study.jpg">
-        </a>
-      </div> -->
 
       <h3 class="clearfix">全國落點排序</h3>
+      <div class="banner">
+        <ul class="banner-orbit" data-orbit>
+            <li class="active">
+                <a href="http://www1.chu.edu.tw/p/412-1000-509.php?Lang=zh-tw" target="_blank">
+                    <img src="../images/banner/109-banner-2.jpg" alt="">
+                </a>
+            </li>
+            <li class="">
+                <a href="http://www1.chu.edu.tw/p/412-1000-490.php?Lang=zh-tw" target="_blank">
+                    <img src="../images/banner/109-banner-3.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+      </div>
       <table id="table-result-suggest-school-departments">
         <thead>
           <tr>
@@ -398,7 +371,6 @@
             <ul>
               <li>薪資資料: <a href="https://www.104.com.tw/jb/career/" target="_blank">104升學就業地圖-系友薪資行情</a></li>
               <ul>
-                <li>如某校系沒有薪資資料，則將該校系的平均薪資視為0</li>
                 <li>薪資資料更新時間: 2020/07/07</li>
               </ul>
               <li>指考分數: <a href="https://www.uac.edu.tw/108data/108_04.pdf" target="_blank">大學考試入學分發委員會官網</a></li>
@@ -429,7 +401,7 @@
               </li>
             </ul>
 
-            <img src="../images/ex-avg-salary.jpg">
+            <img src="../images/ex-avg-salary.png">
           </section>
 
           <section>
@@ -476,6 +448,18 @@
     // alert("2020年指考落點分析已正式上線，歡迎使用。");
     alert("2020年指考落點分析預計於7/17中午12:00正式上線，目前僅供測試");
   };
+
+  $(document).foundation({
+            orbit: {
+                animation: 'slide',
+                timer_speed: 3000,
+                animation_speed: 500,
+                pause_on_hover: false,
+                navigation_arrows: false,
+                bullets: false,
+                slide_number: false,
+            }
+    });
 </script>
 <!-- ref:include analytics -->
 <!-- endref -->
