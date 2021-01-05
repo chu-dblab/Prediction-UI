@@ -2,7 +2,7 @@ var chart_data;
 var debug_data;
 var chart_height = 500;
 var chart_rotate = false;
-var filename = "docs/109-CP-public.json";
+var filename = "docs/109-CP-new.json";
 // if(document.documentElement.clientWidth <= 640) {
 if(screen.width <= 640) {
   chart_rotate = true;
@@ -12,8 +12,6 @@ if(screen.width <= 640) {
 var chart = c3.generate({
   bindto: '#render-chart',
   padding: {
-    // top: 40,
-    // right: 100,
     bottom: 25,
     left: 100,
   },
@@ -48,10 +46,6 @@ var chart = c3.generate({
     x: {
         type: 'category',
         tick: {
-          // format: function(x) {
-          //   // console.log(x);
-          //   return [x];
-          // },
           multiline: true,
           multilineMax: 3,
           width: 80
@@ -63,12 +57,6 @@ var chart = c3.generate({
       label: {
         text: '平均分數 與 平均薪資',
         position: 'outer-middle'
-        // inner-top : default
-        // inner-middle
-        // inner-bottom
-        // outer-top
-        // outer-middle
-        // outer-bottom
       },
       padding: {bottom: 0}
     },
@@ -80,16 +68,6 @@ var chart = c3.generate({
       },
     },
     rotated: chart_rotate
-  },
-  legend: {
-    // position: 'right'
-  },
-  bar: {
-    width: {
-        // ratio: 0.5 // this makes bar width 50% of length between ticks
-    }
-    // or
-    //width: 100 // this makes bar width 100px
   },
   size: {
       height: chart_height
