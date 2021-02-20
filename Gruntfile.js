@@ -95,8 +95,8 @@ module.exports = function(grunt) {
               https: false,
               changeOrigin: true,
               rewrite: {
-                  '^/gsat/api': '2020/gsat/api',
-                  '^/ast/api': 'dev/ast/api',
+                  '^/gsat/api': '2021/gsat/api',
+                  '^/ast/api': '2021/ast/api',
               }
           }
         ]

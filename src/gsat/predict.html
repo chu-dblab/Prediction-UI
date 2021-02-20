@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- ref:include meta -->
     <!-- endref -->
-    <title>落點分析 - 2020 升大學職涯型學測落點分析/預測</title>
+    <title>落點分析 - 2021 升大學職涯型學測落點分析/預測</title>
     <link rel="stylesheet" href="../css/predict.css">
     <script src="../assets/modernizr.js"></script>
 </head>
@@ -19,7 +19,7 @@
     <section id="header" class="page-section">
         <header>
             <div class="inner">
-                <h1><a href="../index.html" data-tooltip aria-haspopup="true" title="回首頁">2020 升大學職涯型
+                <h1><a href="../index.html" data-tooltip aria-haspopup="true" title="回首頁">2021 升大學職涯型
                         <strong>學測落點分析</strong></a></h1>
 
                 <nav>
@@ -285,9 +285,18 @@
         <!-- 查詢結果區域 -->
         <div id="result-area">
             <div class="banner">
-                <a href="#" data-reveal-id="validate-modal">
-                    <img src="../images/banner/109-banner-4.jpg" alt="">
-                </a>
+                <ul class="banner-orbit" data-orbit>
+                    <li class="active">
+                        <a href="http://www1.chu.edu.tw/p/412-1000-509.php?Lang=zh-tw" target="_blank">
+                            <img src="../images/banner/109-banner-2.jpg" alt="">
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="http://www1.chu.edu.tw/p/412-1000-490.php?Lang=zh-tw" target="_blank">
+                            <img src="../images/banner/109-banner-3.jpg" alt="">
+                        </a>
+                    </li>
+                </ul>
             </div>
             <section id="result-suggest-school-departments-area">
                 <h2>落點分析結果 <small>(依薪資排序)</small></h2>
@@ -333,25 +342,6 @@
         </tfoot>
       </table> -->
                 <h3>全國落點排序</h3>
-                <div class="banner">
-                    <ul class="banner-orbit" data-orbit>
-                        <li class="active">
-                            <a href="http://www1.chu.edu.tw/p/412-1000-510.php?Lang=zh-tw" target="_blank">
-                                <img src="../images/banner/109-banner-1.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="http://www1.chu.edu.tw/p/412-1000-509.php?Lang=zh-tw" target="_blank">
-                                <img src="../images/banner/109-banner-2.jpg" alt="">
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="http://www1.chu.edu.tw/p/412-1000-490.php?Lang=zh-tw" target="_blank">
-                                <img src="../images/banner/109-banner-3.jpg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
                 <table id="table-result-suggest-school-departments">
                     <thead>
                         <tr>
@@ -391,7 +381,7 @@
                             </li>
                             <ul>
                                 <li>如某校系沒有薪資資料，則將該校系的平均薪資視為0</li>
-                                <li>薪資資料更新時間: 2020/02/21</li>
+                                <li>薪資資料更新時間: 2021/01/06</li>
                             </ul>
                             <li>學測分數: <a href="https://www.cac.edu.tw/cacportal/index.php"
                                     target="_blank">大學甄選委員會網頁</a></li>
@@ -445,225 +435,6 @@
             <a class="close-reveal-modal">&#215;</a>
         </div>
 
-        <!-- 發送簡訊驗證碼及驗證 -->
-        <div id="validate-modal" class="reveal-modal small" data-reveal>
-            <h3>輸入資料！取得甄試必勝秘笈</h3>
-            <p class="small">備審資料的眉眉角角那麼多，怎麼做才能前進理想大學？<br>
-                輸入下列資料，讓我們把甄戰必勝秘笈寄給你
-                還會抽出30位幸運得主，可以再獲得「大學甄選教戰手冊」暢銷書一本！</p>
-            <hr>
-            <span class="h1">Step 1 - 請驗證您的手機號碼，簡訊驗證通過方可取得抽獎資格</span>
-            <form id="phone-validate">
-                <div class="row collapse">
-                    <div class="large-2 columns">
-                        <span class="prefix">手機號碼</span>
-                    </div>
-                    <div class="large-8 columns">
-                        <input id="phone" type="text" pattern=’09\d{2}\d{6}’ placeholder="請輸入手機號碼" value="" required>
-                    </div>
-                    <div class="large-2 columns">
-                        <input id="send-validate-code" class="button postfix" type="button" value="發送驗證碼">
-                    </div>
-                </div>
-                <div class="row collapse">
-                    <div class="large-2 columns">
-                        <span class="prefix">驗證碼</span>
-                    </div>
-                    <div class="large-8 columns">
-                        <input id="input-code" type="text" placeholder="請輸入簡訊驗證碼" required>
-                    </div>
-                    <div class="large-2 columns">
-                        <input id="validate-code" class="button postfix" type="button" value="驗證手機">
-                    </div>
-                </div>
-                <div id="validateMessage">
-                </div>
-                <a class="close-reveal-modal">&#215;</a>
-            </form>
-        </div>
-
-        <!-- 使用者輸入資訊 -->
-        <div id="user-input-data-modal" class="reveal-modal small" data-reveal>
-        <form id="user_input">
-            <span class="h1">Step 2 - 請輸入以下資訊，填完之後方可取得免費甄試必勝秘笈</span>
-                <div class="row">
-                    <div class="small-12 large-12 columns">
-                        <label for="register-phone">電話</label>
-                        <input type="text" id="register-phone" readonly>
-                    </div>
-
-                    <div class="small-12 large-12 columns">
-                        <label for="register-email">電子郵件信箱(推甄必勝密笈將以電子郵件傳送，請輸入正確的電子郵件信箱)</label>
-                        <input type="email" id="register-email" placeholder="請輸入電子郵件" required>
-                    </div>
-
-                    <div class="small-12 large-12 columns">
-                        <label for="register-address">姓名(寄送抽獎贈品用，請輸入正確的資料)</label>
-                        <input type="text" id="register-name" placeholder="請輸入姓名" required>
-                    </div>
-
-                    <div class="small-12 large-12 columns">
-                        <label for="register-address">地址(寄送抽獎贈品用，請輸入正確的地址)</label>
-                        <input type="text" id="register-address" placeholder="請輸入地址" required>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="small-12 large-6 columns">
-                        <label for="select-location">學校所在縣市</label>
-                        <select id="select-location" class="form-control" required>
-                            <option value="">請選擇</option>
-                            <option value="基隆市">基隆市</option>
-                            <option value="臺北市">臺北市</option>
-                            <option value="新北市">新北市</option>
-                            <option value="桃園市">桃園市</option>
-                            <option value="新竹縣市">新竹縣市</option>
-                            <option value="苗栗縣">苗栗縣</option>
-                            <option value="臺中市">臺中市</option>
-                            <option value="彰化縣">彰化縣</option>
-                            <option value="南投縣">南投縣</option>
-                            <option value="雲林縣">雲林縣</option>
-                            <option value="嘉義縣市">嘉義縣市</option>
-                            <option value="臺南市">臺南市</option>
-                            <option value="高雄市">高雄市</option>
-                            <option value="屏東縣">屏東縣</option>
-                            <option value="宜蘭縣">宜蘭縣</option>
-                            <option value="花蓮縣">花蓮縣</option>
-                            <option value="臺東縣">臺東縣</option>
-                            <option value="澎湖縣">澎湖縣</option>
-                            <option value="連江縣">連江縣</option>
-                            <option value="金門縣">金門縣</option>
-                            <option value="其他">其他</option>
-                        </select>
-                    </div>
-                    <div class="small-12 large-6 columns">
-                        <label for="select-school">學校名稱</label>
-                        <select id="select-school" class="form-control" required>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="small-12 large-6 columns">
-                        <label for="select-identity">身分</label>
-                        <select id="select-identity" class="form-control" required>
-                            <option value="">請選擇</option>
-                            <option value="考生">考生</option>
-                            <option value="家長">家長</option>
-                            <option value="其他">其他</option>
-                        </select>
-                    </div>
-                    <div class="small-12 large-6 columns">
-                        <label>是否有意願就讀中華大學</label>
-                        <input type="radio" id="register-isApplyCHUTrue" name="yesno" value=1 required>
-                        <label for="register-isApplyCHUTrue">是</label>
-                        <input type="radio" id="register-isApplyCHUFalse" name="yesno" value=0 required>
-                        <label for="register-isApplyCHUFalse">否</label>
-                        <input type="radio" id="register-isApplyCHUUnknown" name="yesno" value=2 required>
-                        <label for="register-isApplyCHUUnknown">尚未決定</label>
-                    </div>
-                </div>
-                <div id="interest" class="row hide">
-                    <div class="small-12 large-4 columns">
-                        <label for="">有興趣的科系一</label>
-                        <select id="select-interest-A" class="form-control" required>
-                            <option value="">請選擇</option>
-                            <option value="電機工程學系">電機工程學系</option>
-                            <option value="資訊工程學系">資訊工程學系</option>
-                            <option value="機械工程學系">機械工程學系</option>
-                            <option value="光電與材料工程學系">光電與材料工程學系</option>
-                            <option value="工業管理學系">工業管理學系</option>
-                            <option value="資訊管理學系">資訊管理學系</option>
-                            <option value="企業管理學系">企業管理學系</option>
-                            <option value="財務管理學系">財務管理學系</option>
-                            <option value="建築與都市計畫學系">建築與都市計畫學系</option>
-                            <option value="景觀建築學系">景觀建築學系</option>
-                            <option value="土木工程學系">土木工程學系</option>
-                            <option value="行政管理學系">行政管理學系</option>
-                            <option value="應用日語學系">應用日語學系</option>
-                            <option value="餐旅管理學系">餐旅管理學系</option>
-                            <option value="觀光與會展活動學系">觀光與會展活動學系</option>
-                            <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
-                            <option value="尚未決定">尚未決定</option>
-                        </select>
-                    </div>
-                    <div class="small-12 large-4 columns">
-                        <label for="">有興趣的科系二</label>
-                        <select id="select-interest-B" class="form-control">
-                            <option value="">請選擇</option>
-                            <option value="電機工程學系">電機工程學系</option>
-                            <option value="資訊工程學系">資訊工程學系</option>
-                            <option value="機械工程學系">機械工程學系</option>
-                            <option value="光電與材料工程學系">光電與材料工程學系</option>
-                            <option value="工業管理學系">工業管理學系</option>
-                            <option value="資訊管理學系">資訊管理學系</option>
-                            <option value="企業管理學系">企業管理學系</option>
-                            <option value="財務管理學系">財務管理學系</option>
-                            <option value="建築與都市計畫學系">建築與都市計畫學系</option>
-                            <option value="景觀建築學系">景觀建築學系</option>
-                            <option value="土木工程學系">土木工程學系</option>
-                            <option value="行政管理學系">行政管理學系</option>
-                            <option value="應用日語學系">應用日語學系</option>
-                            <option value="餐旅管理學系">餐旅管理學系</option>
-                            <option value="觀光與會展活動學系">觀光與會展活動學系</option>
-                            <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
-                            <option value="尚未決定">尚未決定</option>
-                        </select>
-                    </div>
-
-                    <div class="small-12 large-4 columns">
-                        <label for="">有興趣的科系三</label>
-                        <select id="select-interest-C" class="form-control">
-                            <option value="">請選擇</option>
-                            <option value="電機工程學系">電機工程學系</option>
-                            <option value="資訊工程學系">資訊工程學系</option>
-                            <option value="機械工程學系">機械工程學系</option>
-                            <option value="光電與材料工程學系">光電與材料工程學系</option>
-                            <option value="工業管理學系">工業管理學系</option>
-                            <option value="資訊管理學系">資訊管理學系</option>
-                            <option value="企業管理學系">企業管理學系</option>
-                            <option value="財務管理學系">財務管理學系</option>
-                            <option value="建築與都市計畫學系">建築與都市計畫學系</option>
-                            <option value="景觀建築學系">景觀建築學系</option>
-                            <option value="土木工程學系">土木工程學系</option>
-                            <option value="行政管理學系">行政管理學系</option>
-                            <option value="應用日語學系">應用日語學系</option>
-                            <option value="餐旅管理學系">餐旅管理學系</option>
-                            <option value="觀光與會展活動學系">觀光與會展活動學系</option>
-                            <option value="英國西英格蘭大學企業管理雙學士學位學程">英國西英格蘭大學企業管理雙學士學位學程</option>
-                            <option value="尚未決定">尚未決定</option>
-                        </select>
-                    </div>
-                </div>
-                <input id="send-register-btn" type="submit" class="button round" value="送出">
-                <div id="registerMessage">
-                </div>
-            </form>
-        </div>
-
-        <!-- 信件內容 -->
-        <div id="info-modal" class="reveal-modal" data-reveal>
-            <p>各位同學：</p>
-            <p>
-              隨著大學學測成績公告，此刻的你（妳）一定在看著落點分析結果發愁，正在憂慮著自己該如何下手準備備審資料。<br>
-
-              中華大學特別與甄戰名師俞征武教授合作拍攝影片，特別節錄出大家製作備審資料時，最關注的三個重點，歡迎同學一起為自己加值：<br><br>
-              <a href="https://youtu.be/uhX3C9B7GKg">【秘笈1：備審資料常見Q&A】</a><br><br>
-              <a href="https://youtu.be/n2o62_DNmIQ">【秘笈2：備審資料怎麼做才能100分】</a><br><br>
-              <a href="https://youtu.be/wydkwEayiow">【秘笈3：備審資料不能犯的NG狀況】</a><br>
-            </p>
-            <br>
-            <p>另外，我們為了要讓各位同學掌握全方位的甄試必勝秘訣，即日起至3月2日（星期一）18時止，凡登錄索取者，我們將於3/2（星期一）晚間19時抽出30位幸運得主，可以再獲得「大學甄選教戰手冊」暢銷書一本。</p>
-            <br>
-            <a class="mx-auto" href="https://imgur.com/hySgbJ2"><img src="https://i.imgur.com/hySgbJ2.png"
-                title="source: imgur.com" /></a>
-            <p>如果有任何問題，歡迎搜尋LINE ID【@chu1990】或點選網址（https://lin.ee/jg0XKan）加入好友，小編線上隨時給你諮詢服務，讓你贏在起跑點！</p>
-            <p>謹祝各位同學　金榜題名、甄戰必勝</p>
-
-            <p>中華大學敬上</p>
-            <a class="close-reveal-modal">&#215;</a>
-        </div>
-
         <!-- ref:include footer -->
         <!-- endref -->
 
@@ -676,7 +447,7 @@
     <script src="../js/department-group-choose.js"></script>
     <script src="js/score-grade-query.js"></script>
     <script src="js/send-predict-data.js"></script>
-    <script src="js/userapplyData.js"></script>
+
     <script>
         window.onload = function () {
             $(document).foundation();
@@ -685,7 +456,7 @@
                 zIndex: 5,
                 useAbsolutePositioning: true
             });
-            // alert("2020年學測落點分析還未正式上線，目前僅供試用。");
+            // alert("2021年學測落點分析還未正式上線，目前僅供試用。");
         };
 
         $(document).foundation({
