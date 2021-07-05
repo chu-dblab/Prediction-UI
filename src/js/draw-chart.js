@@ -2,7 +2,7 @@ var chart_data;
 var debug_data;
 var chart_height = 500;
 var chart_rotate = false;
-var filename = "docs/109-CP-new.json";
+var filename = "docs/110-CP-public.json";
 // if(document.documentElement.clientWidth <= 640) {
 if(screen.width <= 640) {
   chart_rotate = true;
