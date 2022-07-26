@@ -41,6 +41,23 @@
       </div>
     </section>
 
+
+    <!-- Modal 光箱效果 START -->      
+    <div id="doc-modal" class="reveal-modal small" data-reveal role="dialog">   
+      <div class="content">
+        <div style="display: flex; justify-content:center;">
+          <a id="manual" class="button" href="#">操作說明請點我</a>
+        </div>   
+        <div style="display: flex; justify-content:center;">
+          <a href="https://lin.ee/dFEh8F6">
+            <img src="images/chu1990.jpg" width="450px" height="800px">
+          </a>          
+        </div>           
+      </div>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+    <!-- Modal 光箱效果 END   -->
+
     <!-- ref:include footer -->
     <!-- endref -->
 </div>
@@ -50,6 +67,11 @@
 <script src="assets/foundation.min.js"></script>
 <script>
   $(document).foundation();
+  $('#doc-modal').foundation('reveal', 'open');
+  document.getElementById("manual").addEventListener('click', function (e) {
+    e.preventDefault();
+    window.open("manual.html","manual","width=800,height=450,resizable=yes,scrollbars=yes,toolbar=no");
+  })
 </script>
 <!-- ref:include analytics -->
 <!-- endref -->

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作說明</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" 
+            crossorigin="anonymous">
+</head>
+<body>
+    <section class="container my-5">
+        <div class="d-flex justify-content-between">
+            <h3>操作說明</h3>
+            <a id="goback" href="#"><h3>關閉此視窗</h3></a>
+        </div>
+        <hr>
+        <div class="content">        
+            <ol>
+                <li>
+                    <p>加入中華大學Line官方帳號之後，在底下的選單中點選「落點分析Follow」之後，點選「許可」=> 點選「加入好友</p>       
+                    <div class="d-flex justify-content-center">
+                        <img src="./images/mannual/1.png" class="img-fluid" alt="">
+                    </div>
+                </li>
+                <li>
+                    <p>看到如下畫面，點選「點我前往落點分析機器人」按鈕，進入落點分析機器人畫面。
+                        進入畫面之後點開下方的「落點分析」選單，按「我要落點分析」進行落點分析，按「查詢落點分析」查詢分析結果</p>
+                    <div class="d-flex justify-content-center">
+                        <img src="./images/mannual/2.png" class="img-fluid">
+                    </div>
+                </li>
+            </ol>        
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" 
+            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" 
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" 
+            integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" 
+            crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('goback').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.close();
+        });
+    </script>
+</body>
+</html>
