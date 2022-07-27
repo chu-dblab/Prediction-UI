@@ -1,4 +1,4 @@
-// var basePredictSystemUrl = "https://53b2-140-126-120-156.ngrok.io/api/ast/analysis";
+// var basePredictSystemUrl = "https://2cbf-140-126-120-156.ngrok.io/api/ast/analysis";
 var basePredictSystemUrl = "api/ast/analysis";
 var max_input_score = 15;
 var querying = false;
@@ -51,6 +51,20 @@ function getData() {
   let salary = input_salary.value == "" ? 0 : parseInt(input_salary.value);
 
   // 取得使用者填寫的表單資料
+  // let ast_chinese = input_ast_chinese.value == "" ? 0 : parseInt(input_ast_chinese.value);
+  // let ast_english = input_ast_english.value == "" ? 0 : parseInt(input_ast_english.value);
+  // let ast_mathA = input_ast_mathA.value == "" ? 0 : parseInt(input_ast_mathA.value)
+  // let ast_history = input_ast_history.value == "" ? 0 : parseInt(input_ast_history.value);
+  // let ast_geography = input_ast_geography.value == "" ? 0 : parseInt(input_ast_geography.value);
+  // let ast_citizen = input_ast_citizen.value == "" ? 0 : parseInt(input_ast_citizen.value);
+  // let ast_physics = input_ast_physics.value == "" ? 0 : parseInt(input_ast_physics.value);
+  // let ast_chemistry = input_ast_chemistry.value == "" ? 0 : parseInt(input_ast_chemistry.value);
+  // let ast_biology = input_ast_biology.value == "" ? 0 : parseInt(input_ast_biology.value);
+  // let sub_test_mathA = subject_test_math_a.value == "" ? 0 : parseInt(subject_test_math_a.value);
+  // let sub_test_mathB = subject_test_math_b.value == "" ? 0 : parseInt(subject_test_math_b.value);
+  // let sub_test_society = subject_test_society.value == "" ? 0 : parseInt(subject_test_society.value);
+  // let sub_test_science = subject_test_science.value == "" ? 0 : parseInt(subject_test_science.value);
+
   let ast_chinese = parseInt(input_ast_chinese.value);
   let ast_english = parseInt(input_ast_english.value);
   let ast_mathA = parseInt(input_ast_mathA.value)
@@ -326,8 +340,13 @@ function fetchPredictData(data) {
     error: function (data) {
       // 隱藏處理中畫面
       div_loading.classList.add('hidden');
-      errorData();
-      errorAlertMsg("<strong>錯誤！</strong> 沒有網路連線");
+      if(data.status == 400)
+      {
+        warningAlertMsg("請檢查成績是否輸入正確");
+      }else{
+        errorData();
+        errorAlertMsg("<strong>錯誤！</strong> 沒有網路連線");        
+      }
       $('input[type=submit]').prop("disabled", false);
       $('.analyze_start').val('開始分析');
       querying = false;
@@ -343,7 +362,7 @@ function queryResult(data) {
   cleanAlert();
   if(checkGradeIsAllBlank(data.grades)) {
     warningAlertMsg("你還沒填寫成績喔～");
-  } else if(!atLeast3(astData)) {
+  } else if(!atLeast3(subject)) {
     warningAlertMsg("請填入至少三科以上成績喔～");
   } else {
     // 沒有問題，開始向後端要資料
