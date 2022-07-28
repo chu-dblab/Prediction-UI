@@ -1,5 +1,5 @@
-// var liffID = '1657337645-Eop8Wj1r';
-var liffID = '1657321772-40ezKwvL';
+var liffID = '1657337645-Eop8Wj1r';
+// var liffID = '1657321772-40ezKwvL';
 function getData() {
   // 網頁介面對應
   let input_salary        = document.getElementById('input-expect-salary');
@@ -146,6 +146,45 @@ function getData() {
   return data;
 }
 
+function warningAlertMsg(text) {
+  var alertArea = $("#input-area .alerts-area");
+  alertArea.append(`<div data-alert class="alert-box warning round">
+                    ${text}<a href="#" class="close">&times;</a></div>`);
+  $("#input-area .alerts-area").foundation();
+}
+
+function cleanAlert() {
+  var alertArea = $("#input-area .alerts-area");
+  alertArea.empty();
+}
+
+function checkGradeIsAllBlank(grades) {
+  let ast_data = grades.ast;
+  let gsat_data = grades.gsat[1];
+  if(isNaN(ast_data.Biology) && isNaN(ast_data.Chemistry) && isNaN(ast_data.Physics) && isNaN(ast_data.Math_A)
+      && isNaN(ast_data.History) && isNaN(ast_data.Citizen) && isNaN(ast_data.Citizen) && isNaN(gsat_data.Chinese)
+      && isNaN(gsat_data.English) && isNaN(gsat_data.MathA) && isNaN(gsat_data.MathB) && isNaN(gsat_data.Science)
+      && isNaN(gsat_data.Society)) {
+        return true
+      }
+      else return false;
+}
+
+function atLeast3(data) {
+  var bool = false;
+  var count = 0;
+
+  for (const key in data)
+  {
+    if(count < 3) {
+      if(data[key] > 0) count++;
+    } else {
+      bool = true;
+    }
+  }
+  return bool;
+}
+
 function sentToLIFF(data) {
     if (!liff.isInClient()) {
         alert('This button is unavailable as LIFF is currently being opened in an external browser.');
@@ -175,5 +214,16 @@ let form_input = document.getElementById('input-form');
 form_input.onsubmit = function (e)  {
     e.preventDefault();
     let studentGrade = getData();
-    sentToLIFF(studentGrade);
+    let astData = studentGrade.grades.ast;
+    let gsatData = studentGrade.grades.gsat[1];
+    let subject = Object.assign(astData,gsatData);
+    cleanAlert();
+    if(checkGradeIsAllBlank(studentGrade.grades)) {
+      warningAlertMsg("你還沒填寫成績喔～");
+    } else if(!atLeast3(subject)) {
+      warningAlertMsg("請填入至少三科以上成績喔～");
+    } else {      
+      sentToLIFF(studentGrade);
+    }
+    
 }
